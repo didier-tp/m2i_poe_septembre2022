@@ -11,6 +11,7 @@ public class App {
 	public static void m1() {
 		Personne p1=null;
 		p1=new Personne();
+		System.out.println("p1="+p1);
 		p1.prenom="jean";
 		p1.nom="Bon";
 		p1.age=30;
@@ -20,6 +21,17 @@ public class App {
 		System.out.println(p1.toString());
 		System.out.println("p1="+p1.toString());
 		System.out.println("p1="+p1);//avec appel automatique/implicite à .toString()
+		
+		Personne p2 = new Personne("jean","Bon",31);
+		
+		
+		if(p1.equals(p2)) {
+			System.out.println("p1 et p2 ont mêmes valeurs internes");
+		}
+		else {
+			System.out.println("p1 et p2 ont des valeurs internes un peu différentes");
+		}
+		
 	}
 
 }
