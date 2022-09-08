@@ -16,3 +16,6 @@ futures actualisations:
 cd c:\references\m2i_poe_septembre2022
 git pull
 ---------
+touche "windows" + R
+saisir "osk" puis ok
+et hop un clavier visuel pour dépanner un peu.
