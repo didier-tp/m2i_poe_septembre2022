@@ -17,7 +17,9 @@ public class App {
 		
 		p1.incrementerAge();
 		p1.afficher();
-		//...
+		System.out.println(p1.toString());
+		System.out.println("p1="+p1.toString());
+		System.out.println("p1="+p1);//avec appel automatique/implicite à .toString()
 	}
 
 }

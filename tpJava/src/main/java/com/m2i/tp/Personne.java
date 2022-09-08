@@ -16,4 +16,11 @@ public class Personne {
 		//age++;
 	}
 
+	@Override
+	public String toString() {
+		return "Personne [prenom=" + prenom + ", nom=" + nom + ", age=" + age + "]";
+	}
+
+
+	
 }
