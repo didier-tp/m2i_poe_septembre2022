@@ -73,7 +73,14 @@ public class Personne {
 	}
 
 	public void setAge(int age) {
-		this.age = age;
+		//this.age = age;
+		if(age<0) {
+			System.err.println("age negative invalide");
+			//throw new RuntimeException("age negative invalide");
+		}
+		else {
+			this.age = age;
+		}
 	}
 
     

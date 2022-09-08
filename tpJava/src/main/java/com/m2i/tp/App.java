@@ -21,6 +21,7 @@ public class App {
 		p1.setPrenom("jean");
 		p1.setNom("Bon");
 		p1.setAge(30);
+		p1.setAge(-5); //demande idiote qui ne sera pas prise en compte
 		
 		p1.incrementerAge();
 		System.out.println("nouvel age de p1 = " + p1.getAge());
