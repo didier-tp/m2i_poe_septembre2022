@@ -6,7 +6,10 @@ public class Personne {
 	
 	private String prenom;
 	private String nom;
-	private int age;
+	//private int age;  // -5 , 0 , 5 mais pas null
+	private Integer age;// -5 , 0 , 5 ou null 
+	                    //null signifie inconnu dans colonne d'une table d'une base de données
+	                    //null signifie "pas saisie" dans un formulaire
 	
 	
 	public Personne() {
@@ -68,11 +71,11 @@ public class Personne {
 		this.nom = nom;
 	}
 
-	public int getAge() {
+	public Integer getAge() {
 		return age;
 	}
 
-	public void setAge(int age) {
+	public void setAge(Integer age) {
 		//this.age = age;
 		if(age<0) {
 			System.err.println("age negative invalide");
