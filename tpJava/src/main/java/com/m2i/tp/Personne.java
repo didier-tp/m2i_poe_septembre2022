@@ -4,10 +4,9 @@ import java.util.Objects;
 
 public class Personne {
 	
-	public String prenom;
-	public String nom;
-	public int age;
-	
+	private String prenom;
+	private String nom;
+	private int age;
 	
 	
 	public Personne() {
@@ -53,6 +52,30 @@ public class Personne {
 		return age == other.age && Objects.equals(nom, other.nom) && Objects.equals(prenom, other.prenom);
 	}
 
+	public String getPrenom() {
+		return prenom;
+	}
 
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+    
 	
 }

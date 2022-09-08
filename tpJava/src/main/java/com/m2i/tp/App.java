@@ -12,11 +12,19 @@ public class App {
 		Personne p1=null;
 		p1=new Personne();
 		System.out.println("p1="+p1);
+		/*
+		//plus possible si private
 		p1.prenom="jean";
 		p1.nom="Bon";
 		p1.age=30;
+		*/
+		p1.setPrenom("jean");
+		p1.setNom("Bon");
+		p1.setAge(30);
 		
 		p1.incrementerAge();
+		System.out.println("nouvel age de p1 = " + p1.getAge());
+		
 		p1.afficher();
 		System.out.println(p1.toString());
 		System.out.println("p1="+p1.toString());
