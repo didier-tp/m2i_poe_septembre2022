@@ -32,11 +32,11 @@ public class App {
 		//calculer et afficher la racine carrée de 9 via la classe prédéfinie Math
 		System.out.println("la racine carree de 9 vaut "  + Math.sqrt(9.0));
 		
-		System.out.println("espérance de vie mondiale avant covid"  + Personne.getEsperanceVie());
+		System.out.println("espérance de vie mondiale avant covid="  + Personne.getEsperanceVie());
 		Personne.setEsperanceVie(Personne.getEsperanceVie()-1);
-		System.out.println("espérance de vie mondiale durant covid"  + Personne.getEsperanceVie());
+		System.out.println("espérance de vie mondiale durant covid="  + Personne.getEsperanceVie());
 		Personne.setEsperanceVie(Personne.getEsperanceVie()+1);
-		System.out.println("espérance de vie mondiale apres vaccins pour covid"  + Personne.getEsperanceVie());
+		System.out.println("espérance de vie mondiale apres vaccins pour covid="  + Personne.getEsperanceVie());
 	}
 	
 	public static void m2() {
@@ -95,6 +95,9 @@ public class App {
 			System.out.println("p1 et p2 ont des valeurs internes un peu différentes");
 		}
 		
+		Employe e1 = .
+				e1.incrementerAge();
+		e1.afficher();
 	}
 
 }
