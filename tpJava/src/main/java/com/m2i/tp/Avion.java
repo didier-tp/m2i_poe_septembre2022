@@ -2,16 +2,60 @@ package com.m2i.tp;
 
 public class Avion {
 	 
-	String nom; //ex : A320_ex1
-	int NB_PLACES=200;
-	int nbPersonnes=0;
-	Personne[] tabPersonnes ; //de taille = NB_PLACES
+	private String nom; //ex : A320_ex1
+	public static final int NB_PLACES=200;
+	private int nbPersonnes=0;
+	private Personne[] tabPersonnes ; //de taille = NB_PLACES
 	
-	void addPers(Personne p){
-		//placer p dans tabPersonnes 
-		//et incrementer nbPersonnes
+	public Avion(String nom) {
+		this.nom=nom;
+		tabPersonnes=new Personne[NB_PLACES];
+	}
+	
+	public Avion() {
+		this("nomAvionParDefaut");
+	}
+	
+	public void addPers(Personne p){
+		if(nbPersonnes<NB_PLACES) {
+			//placer p dans tabPersonnes 
+			tabPersonnes[nbPersonnes]=p;
+			//et incrementer nbPersonnes
+			nbPersonnes++;
+		}else {
+			System.err.println("Avion dejà plein, plus de place");
+		}
 	}
 	
 	//void afficher() qui affiche tout (et les Personnes en boucle)
+	public void afficher() {
+		System.out.println("Avion " + nom + " NB_PLACES="+ NB_PLACES );
+		System.out.println("\t nbPersonnes=" + nbPersonnes );
+		System.out.println("\t personnes montées dans avion:" );
+		for(int i=0;i<nbPersonnes;i++) {
+			System.out.println("\t\t" + tabPersonnes[i].toString());
+		}
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public int getNbPersonnes() {
+		return nbPersonnes;
+	}
+
+	public void setNbPersonnes(int nbPersonnes) {
+		this.nbPersonnes = nbPersonnes;
+	}
+
+	public Personne[] getTabPersonnes() {
+		return tabPersonnes;
+	}
+
 
 }

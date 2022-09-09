@@ -3,16 +3,21 @@ package com.m2i.tp;
 public class App {
 
 	public static void main(String[] args) {
+		//m0();
+        //m1();
+        //m2();
+        m3();
+        
+	}
+	
+	public static void m0() {
 		System.out.println("hello");
 		Integer iObj = new Integer(10); //ou bien plus simplement Integer iObj = 10; depuis java 5
 		//iObj.setIntValue(11); impossible sur classe Integer car immuable
 		//seule possibilité : 
 		iObj = new Integer(iObj+1); //ou bien iObj = iObj+1
 		System.out.println("iObj="+iObj);
-        //m1();
-        //m2();
-        
-        String ch="abc";
+		String ch="abc";
         ch=ch + "_suite";
 	}
 	
@@ -25,7 +30,13 @@ public class App {
 		
 		avion1.afficher();
 		//calculer et afficher la racine carrée de 9 via la classe prédéfinie Math
-		//...
+		System.out.println("la racine carree de 9 vaut "  + Math.sqrt(9.0));
+		
+		System.out.println("espérance de vie mondiale avant covid"  + Personne.getEsperanceVie());
+		Personne.setEsperanceVie(Personne.getEsperanceVie()-1);
+		System.out.println("espérance de vie mondiale durant covid"  + Personne.getEsperanceVie());
+		Personne.setEsperanceVie(Personne.getEsperanceVie()+1);
+		System.out.println("espérance de vie mondiale apres vaccins pour covid"  + Personne.getEsperanceVie());
 	}
 	
 	public static void m2() {

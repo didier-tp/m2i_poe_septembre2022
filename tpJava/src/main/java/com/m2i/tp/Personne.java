@@ -4,12 +4,15 @@ import java.util.Objects;
 
 public class Personne {
 	
+	private static int esperanceVie=72; //moyenne mondiale (selon statistique)
+	
 	private String prenom;
 	private String nom;
 	//private int age;  // -5 , 0 , 5 mais pas null
 	private Integer age;// -5 , 0 , 5 ou null 
 	                    //null signifie inconnu dans colonne d'une table d'une base de données
 	                    //null signifie "pas saisie" dans un formulaire
+	
 	
 	
 	public Personne() {
@@ -84,6 +87,14 @@ public class Personne {
 		else {
 			this.age = age;
 		}
+	}
+
+	public static int getEsperanceVie() {
+		return esperanceVie;
+	}
+
+	public static void setEsperanceVie(int esperanceVie) {
+		Personne.esperanceVie = esperanceVie;
 	}
 
     
