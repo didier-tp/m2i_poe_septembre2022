@@ -6,7 +6,7 @@ public class App {
 		//m0();
         m1();
         //m2();
-        m3(); //avion
+        //m3(); //avion
         
 	}
 	
@@ -101,6 +101,16 @@ public class App {
 		e2.incrementerAge();
 		e2.afficher();
 		System.out.println("e2="+e2.toString()); //ou bien System.out.println("e2="+e2);
+		
+		Personne p=null; 
+		p=p2;
+		p.afficher(); //affichera prenom,nom,age
+		p=e2;
+		p.afficher(); //affichera prenom,nom,age,fonction,salaire
+		if(p instanceof Employe) {
+			String f =((Employe)p).getFonction();
+			System.out.println("fontion="+f);
+		}
 	}
 
 }

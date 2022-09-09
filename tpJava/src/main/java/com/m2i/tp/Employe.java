@@ -20,6 +20,7 @@ public class Employe extends Personne {
 
 
 	//redefinir afficher() et toString()
+	@Override
 	public void afficher() {
 		super.afficher();
 		System.out.println("Employe avec fonction="+fonction + " et salaire="+salaire);
@@ -35,6 +36,9 @@ public class Employe extends Personne {
 
 	
 	
+	
+
+
 	//+get/set
 	public String getFonction() {
 		return fonction;
