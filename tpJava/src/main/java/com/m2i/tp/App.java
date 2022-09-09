@@ -4,9 +4,9 @@ public class App {
 
 	public static void main(String[] args) {
 		//m0();
-        //m1();
+        m1();
         //m2();
-        m3();
+        //m3();
         
 	}
 	
@@ -95,9 +95,12 @@ public class App {
 			System.out.println("p1 et p2 ont des valeurs internes un peu différentes");
 		}
 		
-		Employe e1 = .
-				e1.incrementerAge();
+		Employe e1 = new Employe();
 		e1.afficher();
+		Employe e2 = new Employe("axelle","Aire",30,"directrice",4500.0);
+		e2.incrementerAge();
+		e2.afficher();
+		System.out.println("e2="+e2.toString()); //ou bien System.out.println("e2="+e2);
 	}
 
 }
