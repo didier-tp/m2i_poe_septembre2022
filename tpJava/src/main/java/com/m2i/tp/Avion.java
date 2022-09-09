@@ -7,6 +7,27 @@ public class Avion extends ObjetVolant {
 	//public static final int NB_PLACES=saisirConstanteNbPlaces();
 	private int nbPersonnes=0;
 	private Personne[] tabPersonnes ; //de taille = NB_PLACES
+	
+	private int nbChosesTransportables=0;
+	private Transportable tabTransportables[] = new Transportable[300];
+	
+	public void addTransportable(Transportable t){
+		//...
+	}
+	
+	//void afficher() qui affiche tout (et les Personnes en boucle)
+		public void afficher() {
+			System.out.println("Avion " + nom + " NB_PLACES="+ NB_PLACES );
+			System.out.println("\t nbPersonnes=" + nbPersonnes );
+			System.out.println("\t personnes montées dans avion:" );
+			for(int i=0;i<nbPersonnes;i++) {
+				System.out.println("\t\t" + tabPersonnes[i].toString());//polymorphisme sur .toString() de Personne ou Employe 
+			}
+			//boucler sur le tableau des choses transportables
+			//   affichage via .toString()
+			//   calculer le poids total des éléments placés dans la soute
+		}
+	
 	/*
 	public static int saisirConstanteNbPlaces() {
 		System.out.print("NB_PLACES=");
@@ -43,15 +64,7 @@ public class Avion extends ObjetVolant {
 		}
 	}
 	
-	//void afficher() qui affiche tout (et les Personnes en boucle)
-	public void afficher() {
-		System.out.println("Avion " + nom + " NB_PLACES="+ NB_PLACES );
-		System.out.println("\t nbPersonnes=" + nbPersonnes );
-		System.out.println("\t personnes montées dans avion:" );
-		for(int i=0;i<nbPersonnes;i++) {
-			System.out.println("\t\t" + tabPersonnes[i].toString());//polymorphisme sur .toString() de Personne ou Employe 
-		}
-	}
+	
 
 	public String getNom() {
 		return nom;

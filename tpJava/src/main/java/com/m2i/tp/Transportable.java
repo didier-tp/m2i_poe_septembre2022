@@ -7,7 +7,8 @@ public interface Transportable {
 
 /*
 NB: cette interface sera implementée par:
-     Personne
+     Personne (code serieux avec private et get/set
+               ou bien getPoids() { return 70.0; } )
      Bagage (nouvelle classe)
      
 et dans la classe Avion , il y aura une soute 

@@ -28,6 +28,10 @@ public class App {
 		avion1.addPers(new Personne("prenomPassager1","nomPassager1",25));
 		avion1.addPers(new Personne("prenomPassager2","nomPassager3",25));
 		
+		avion1.addTransportable(new Bagage("sac1",12.5 , 25.5));
+		avion1.addTransportable(new Bagage("valise1",12.5 , 25.5));
+		avion1.addTransportable(new Personne(.));
+		
 		avion1.afficher();
 		
 		ObjetVolant objV ;
