@@ -3,9 +3,15 @@ package com.m2i.tp;
 public class Avion {
 	 
 	private String nom; //ex : A320_ex1
-	public static final int NB_PLACES=200;
+	//public static final int NB_PLACES=200;
+	public static final int NB_PLACES=saisirConstanteNbPlaces();
 	private int nbPersonnes=0;
 	private Personne[] tabPersonnes ; //de taille = NB_PLACES
+	
+	public static int saisirConstanteNbPlaces() {
+		System.out.print("NB_PLACES=");
+		return (new java.util.Scanner(System.in)).nextInt();
+	}
 	
 	public Avion(String nom) {
 		this.nom=nom;
