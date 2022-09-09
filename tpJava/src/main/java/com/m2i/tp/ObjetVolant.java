@@ -2,7 +2,7 @@ package com.m2i.tp;
 
 public abstract class ObjetVolant {
 	
-	private int altitudeMax = 500; //par defaut
+	protected int altitudeMax = 500; //par defaut
 	
 	public abstract void decrire();
 

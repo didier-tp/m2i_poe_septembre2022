@@ -1,6 +1,6 @@
 package com.m2i.tp;
 
-public class Avion {
+public class Avion extends ObjetVolant {
 	 
 	private String nom; //ex : A320_ex1
 	public static final int NB_PLACES=200;
@@ -13,11 +13,21 @@ public class Avion {
 		return (new java.util.Scanner(System.in)).nextInt();
 	}*/
 	
+	@Override
+	public void decrire() {
+		//System.out.println("Avion de nom=" + nom + " et avec altitudeMax=" + this.getAltitudeMax()); //avec altitudeMax codé en private
+		System.out.println("Avion de nom=" + nom + " et avec altitudeMax=" + this.altitudeMax);
+	}
+	
+	
+	
 	public Avion(String nom) {
 		this.nom=nom;
 		tabPersonnes=new Personne[NB_PLACES];
+		this.setAltitudeMax(12000);
 	}
 	
+
 	public Avion() {
 		this("nomAvionParDefaut");
 	}
@@ -62,6 +72,9 @@ public class Avion {
 	public Personne[] getTabPersonnes() {
 		return tabPersonnes;
 	}
+
+
+	
 
 
 }

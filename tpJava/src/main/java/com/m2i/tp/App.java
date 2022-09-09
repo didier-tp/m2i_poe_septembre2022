@@ -29,6 +29,14 @@ public class App {
 		avion1.addPers(new Personne("prenomPassager2","nomPassager3",25));
 		
 		avion1.afficher();
+		
+		ObjetVolant objV ;
+		//objV = new ObjetVolant(); //new direct interdit sur classe abstract
+		objV=avion1;
+		//objV=new Helicoptere();
+		System.out.println("altitudeMax=" + objV.getAltitudeMax());
+		objV.decrire();
+		
 		//calculer et afficher la racine carrée de 9 via la classe prédéfinie Math
 		System.out.println("la racine carree de 9 vaut "  + Math.sqrt(9.0));
 		
