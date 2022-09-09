@@ -12,7 +12,8 @@ public class Avion extends ObjetVolant {
 	private Transportable tabTransportables[] = new Transportable[300];
 	
 	public void addTransportable(Transportable t){
-		//...
+		if(nbChosesTransportables==300) return;//arrêter et sortir de la fonction avant de faire n'importe quoi
+		tabTransportables[nbChosesTransportables++]=t;
 	}
 	
 	//void afficher() qui affiche tout (et les Personnes en boucle)
@@ -26,6 +27,13 @@ public class Avion extends ObjetVolant {
 			//boucler sur le tableau des choses transportables
 			//   affichage via .toString()
 			//   calculer le poids total des éléments placés dans la soute
+			double poidsTotal=0.0;
+			System.out.println("\t bagages dans la soute de l'avion:" );
+			for(int i=0;i<nbChosesTransportables;i++) {
+				System.out.println("\t\t" + tabTransportables[i].toString());//polymorphisme sur .toString() de Personne ou Bagage 
+				poidsTotal = poidsTotal + tabTransportables[i].getPoids();//polymorphisme sur .getPoids() de Personne ou Bagage 
+			}
+			System.out.println("\t poids total des éléments en soute="+poidsTotal);
 		}
 	
 	/*

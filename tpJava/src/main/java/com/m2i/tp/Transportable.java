@@ -1,8 +1,8 @@
 package com.m2i.tp;
 
 public interface Transportable {
-     //double getPoids(); //en kg
-	 //double getVolume(); //en litre
+     double getPoids(); //en kg
+	 double getVolume(); //en litre
 }
 
 /*

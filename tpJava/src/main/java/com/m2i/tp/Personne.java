@@ -2,18 +2,33 @@ package com.m2i.tp;
 
 import java.util.Objects;
 
-public class Personne {
+public class Personne implements Transportable {
 	
 	private static int esperanceVie=72; //moyenne mondiale (selon statistique)
 	
 	private String prenom;
+	private double poids = 75.0; //poids moyen en tant que valeur par défaut
 	private String nom;
 	//private int age;  // -5 , 0 , 5 mais pas null
 	private Integer age;// -5 , 0 , 5 ou null 
 	                    //null signifie inconnu dans colonne d'une table d'une base de données
 	                    //null signifie "pas saisie" dans un formulaire
 	
+	@Override
+	public double getPoids() {
+		//return 75.0; //poids moyen (V1)
+		return this.poids; //V2
+	}
 	
+	public void setPoids(double poids) {
+		this.poids = poids;
+	}
+
+
+	@Override
+	public double getVolume() {
+		return 75.0; //volume moyen (V1)
+	}
 	
 	public Personne() {
 		super();
@@ -36,9 +51,10 @@ public class Personne {
 		//age++;
 	}
 
+	
 	@Override
 	public String toString() {
-		return "Personne [prenom=" + prenom + ", nom=" + nom + ", age=" + age + "]";
+		return "Personne [prenom=" + prenom + ", poids=" + poids + ", nom=" + nom + ", age=" + age + "]";
 	}
 
 	@Override
@@ -97,6 +113,5 @@ public class Personne {
 		Personne.esperanceVie = esperanceVie;
 	}
 
-    
 	
 }

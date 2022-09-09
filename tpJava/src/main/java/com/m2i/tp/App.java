@@ -29,8 +29,9 @@ public class App {
 		avion1.addPers(new Personne("prenomPassager2","nomPassager3",25));
 		
 		avion1.addTransportable(new Bagage("sac1",12.5 , 25.5));
-		avion1.addTransportable(new Bagage("valise1",12.5 , 25.5));
-		avion1.addTransportable(new Personne(.));
+		avion1.addTransportable(new Bagage("valise en carton",12.5 , 25.5));
+		Transportable passagerClandestin= new Personne("carlos","Ghosn",68);//poids = 75kg par defaut
+		avion1.addTransportable(passagerClandestin);
 		
 		avion1.afficher();
 		
