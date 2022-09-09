@@ -39,7 +39,7 @@ public class Avion {
 		System.out.println("\t nbPersonnes=" + nbPersonnes );
 		System.out.println("\t personnes montées dans avion:" );
 		for(int i=0;i<nbPersonnes;i++) {
-			System.out.println("\t\t" + tabPersonnes[i].toString());
+			System.out.println("\t\t" + tabPersonnes[i].toString());//polymorphisme sur .toString() de Personne ou Employe 
 		}
 	}
 

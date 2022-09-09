@@ -6,7 +6,7 @@ public class App {
 		//m0();
         m1();
         //m2();
-        //m3(); //avion
+        m3(); //avion
         
 	}
 	
@@ -23,8 +23,8 @@ public class App {
 	
 	public static void m3() {
 		Avion avion1 = new Avion("A320_ex1");
-		avion1.addPers(new Personne("prenomPilote","nomPilote",45));
-		avion1.addPers(new Personne("prenomHotesse","nomHotesse",35));
+		avion1.addPers(new Employe("prenomPilote","nomPilote",45,"pilote",5000.0));
+		avion1.addPers(new Employe("prenomHotesse","nomHotesse",35,"hotesse",2500.0));
 		avion1.addPers(new Personne("prenomPassager1","nomPassager1",25));
 		avion1.addPers(new Personne("prenomPassager2","nomPassager3",25));
 		
