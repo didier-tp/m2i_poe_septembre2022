@@ -19,3 +19,5 @@ git pull
 touche "windows" + R
 saisir "osk" puis ok
 et hop un clavier visuel pour dépanner un peu.
+----------
+peut être https://www.pcastuces.com/pratique/windows/mappage_clavier/page3.htm ???

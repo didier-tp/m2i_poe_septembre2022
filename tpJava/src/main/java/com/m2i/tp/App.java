@@ -10,10 +10,22 @@ public class App {
 		iObj = new Integer(iObj+1); //ou bien iObj = iObj+1
 		System.out.println("iObj="+iObj);
         //m1();
-        m2();
+        //m2();
         
         String ch="abc";
         ch=ch + "_suite";
+	}
+	
+	public static void m3() {
+		Avion avion1 = new Avion("A320_ex1");
+		avion1.addPers(new Personne("prenomPilote","nomPilote",45));
+		avion1.addPers(new Personne("prenomHotesse","nomHotesse",35));
+		avion1.addPers(new Personne("prenomPassager1","nomPassager1",25));
+		avion1.addPers(new Personne("prenomPassager2","nomPassager3",25));
+		
+		avion1.afficher();
+		//calculer et afficher la racine carrée de 9 via la classe prédéfinie Math
+		//...
 	}
 	
 	public static void m2() {
