@@ -8,6 +8,20 @@ public class Calculs {
 	private static Logger logger = LoggerFactory.getLogger(Calculs.class);
 
 	
+	//public static double racineCarreAvecConversion(String sx) throws CalculException,NumberFormatException{
+		public static double racineCarreAvecConversion(String sx) throws RuntimeException,NumberFormatException{
+			double x =Double.parseDouble(sx);//si sx="16" alors x=16.0 
+			//mais si sx="a6' alors NumberFormatException
+			double res = 0;
+			try {
+				res=racineCarre(x);
+			} catch (CalculException e) {
+				//e.printStackTrace();
+				logger.error("echec racineCarreAvecConversion avec x="+x ,e);
+				throw new RuntimeException("echec racineCarreAvecConversion",e);
+			}
+			return res;
+		}
 
 	public static int division2(int a, int b) throws Exception {
 		if(b==0) 
@@ -30,18 +44,6 @@ public class Calculs {
 		//logger.debug("dans racineCarre x="+x);
 		return Math.sqrt(x);
 	}
-	//public static double racineCarreAvecConversion(String sx) throws CalculException,NumberFormatException{
-	public static double racineCarreAvecConversion(String sx) throws RuntimeException,NumberFormatException{
-		double x =Double.parseDouble(sx);//si sx="16" alors x=16.0 
-		//mais si sx="a6' alors NumberFormatException
-		double res = 0;
-		try {
-			res=racineCarre(x);
-		} catch (CalculException e) {
-			e.printStackTrace();
-			throw new RuntimeException("echec racineCarreAvecConversion",e);
-		}
-		return res;
-	}
+	
 
 }
