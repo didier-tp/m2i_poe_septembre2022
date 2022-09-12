@@ -30,12 +30,18 @@ public class Calculs {
 		//logger.debug("dans racineCarre x="+x);
 		return Math.sqrt(x);
 	}
-	
-	public static double racineCarreAvecConversion(String sx) {
+	//public static double racineCarreAvecConversion(String sx) throws CalculException,NumberFormatException{
+	public static double racineCarreAvecConversion(String sx) throws RuntimeException,NumberFormatException{
 		double x =Double.parseDouble(sx);//si sx="16" alors x=16.0 
 		//mais si sx="a6' alors NumberFormatException
-		//logger.debug("dans racineCarreAvecConversion sx="+sx);
-		return racineCarre(x);
+		double res = 0;
+		try {
+			res=racineCarre(x);
+		} catch (CalculException e) {
+			e.printStackTrace();
+			throw new RuntimeException("echec racineCarreAvecConversion",e);
+		}
+		return res;
 	}
 
 }

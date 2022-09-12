@@ -67,10 +67,20 @@ public class App {
 		try {
 			res3 = Calculs.racineCarre(x);
 			System.out.println("pour x="+x + ", racinneCarre = " + res3);
-			x=-9;
-			res3 = Calculs.racineCarre(x);
+			//x=-9;
+			//res3 = Calculs.racineCarre(x);
 			System.out.println("pour x="+x + ", racinneCarre = " + res3);
-		} catch (CalculException e) {
+			res3 = Calculs.racineCarreAvecConversion("36");
+			System.out.println("pour sx=36, racinneCarre = " + res3);
+			//res3 = Calculs.racineCarreAvecConversion("a9");
+			res3 = Calculs.racineCarreAvecConversion("-9");
+			System.out.println("pour sx=a6, racinneCarre = " + res3);
+		} 
+		catch (NumberFormatException e) {
+			 e.printStackTrace();
+			 //System.err.println(e.getMessage());
+		}
+		catch (RuntimeException e) {
 			 //e.printStackTrace();
 			 System.err.println(e.getMessage());
 		}
