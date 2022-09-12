@@ -34,14 +34,26 @@ public class App {
 		int a1=3; int b1=2;
 		
 		try {
+			//division remonte de execption de type RuntimeException
+			//et le try/catch est alors facultatif
 			int res1 = Calculs.division(a1, b1);
 			System.out.println("res1="+res1);
 			b1=0;
 			res1 = Calculs.division(a1, b1);
 			System.out.println("res1="+res1);
 		} catch (RuntimeException e) {
+		   e.printStackTrace();
+		   //System.err.println(e.getMessage());
+		}
+		
+		try {
+			//division2 remonte une exception n'heritant pas de RuntimeException
+			//le try/catch est obligatoire , sinon ça ne compile pas 
+			int res2 = Calculs.division2(a1, b1);
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 		System.out.println("suite ...");
 	}
 	

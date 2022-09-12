@@ -2,6 +2,12 @@ package com.m2i.tp.calcul;
 
 public class Calculs {
 
+	public static int division2(int a, int b) throws Exception {
+		if(b==0) 
+			throw new Exception("division par 0 interdite");
+		return a/b;
+	}
+	
 	
 	public static int division(int a, int b) throws RuntimeException {
 		if(b==0) 
