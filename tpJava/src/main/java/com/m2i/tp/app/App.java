@@ -11,6 +11,7 @@ import com.m2i.tp.Porte;
 import com.m2i.tp.PorteBattant;
 import com.m2i.tp.PorteCoulissante;
 import com.m2i.tp.Transportable;
+import com.m2i.tp.calcul.Calculs;
 
 
 
@@ -19,14 +20,29 @@ public class App {
 
 	public static void main(String[] args) {
 		//m0();
-        m1();
+        //m1();
         //m2();
-        m3(); //avion
-        testPorte();
-        
+        //m3(); //avion
+        //testPorte();
+        m4();
         //java.util.Date d = new java.util.Date();
         Date d = new Date();
         System.out.println("d="+d);
+	}
+	
+	public static void m4() {
+		int a1=3; int b1=2;
+		
+		try {
+			int res1 = Calculs.division(a1, b1);
+			System.out.println("res1="+res1);
+			b1=0;
+			res1 = Calculs.division(a1, b1);
+			System.out.println("res1="+res1);
+		} catch (RuntimeException e) {
+			e.printStackTrace();
+		}
+		System.out.println("suite ...");
 	}
 	
 	public static void m0() {
