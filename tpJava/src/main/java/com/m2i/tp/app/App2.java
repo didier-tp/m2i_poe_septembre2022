@@ -34,9 +34,17 @@ public class App2 {
 		//on va creer une autre collection
 		//qui va comporter que les personnes qui au 40ans au plus:
 		List<Personne> listePersonnes40ansAuplus = new ArrayList<>();
-		
+		for(Personne p : listePersonnes) {
+			if(p.getAge()<=40) {
+				listePersonnes40ansAuplus.add(p);
+			}
+		}
 		
 		//affiche listePersonnes40ansAuplus via le for() au sens forEach
+		System.out.println("listePersonnes40ansAuplus:");
+		for(Personne p : listePersonnes40ansAuplus) {
+			System.out.println("\t" + p); //p.toString() implicitement déclenché
+		}
 	}
 	
 	public static void testCollectionModerne() {
