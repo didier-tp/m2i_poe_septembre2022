@@ -1,7 +1,12 @@
 package com.m2i.tp;
 
 import java.util.Objects;
-
+/**
+ * Personne = Personne humaine
+ * 
+ * @author Didier Defrance
+ *
+ */
 public class Personne implements Transportable {
 	
 	private static int esperanceVie=72; //moyenne mondiale (selon statistique)

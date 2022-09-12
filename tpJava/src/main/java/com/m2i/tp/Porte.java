@@ -1,4 +1,4 @@
-package com.m2i.tp.porte;
+package com.m2i.tp;
 
 public abstract class Porte {
 	private String couleur;

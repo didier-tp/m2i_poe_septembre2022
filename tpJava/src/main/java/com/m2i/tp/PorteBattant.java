@@ -1,4 +1,4 @@
-package com.m2i.tp.porte;
+package com.m2i.tp;
 
 public class PorteBattant extends Porte {
      private int angleRotation=0; //0 ferm�e , 90 degr� = ouvert

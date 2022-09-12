@@ -61,7 +61,7 @@ public class Avion extends ObjetVolant {
 		this("nomAvionParDefaut");
 	}
 	
-	public void addPers(Personne p){
+    public void addPers(Personne p){
 		if(nbPersonnes<NB_PLACES) {
 			//placer p dans tabPersonnes 
 			tabPersonnes[nbPersonnes]=p;

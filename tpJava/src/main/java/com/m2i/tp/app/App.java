@@ -1,8 +1,19 @@
-package com.m2i.tp;
+package com.m2i.tp.app;
 
-import com.m2i.tp.porte.Porte;
-import com.m2i.tp.porte.PorteBattant;
-import com.m2i.tp.porte.PorteCoulissante;
+import java.util.Date;
+
+import com.m2i.tp.Avion;
+import com.m2i.tp.Bagage;
+import com.m2i.tp.Employe;
+import com.m2i.tp.ObjetVolant;
+import com.m2i.tp.Personne;
+import com.m2i.tp.Porte;
+import com.m2i.tp.PorteBattant;
+import com.m2i.tp.PorteCoulissante;
+import com.m2i.tp.Transportable;
+
+
+
 
 public class App {
 
@@ -12,6 +23,10 @@ public class App {
         //m2();
         m3(); //avion
         testPorte();
+        
+        //java.util.Date d = new java.util.Date();
+        Date d = new Date();
+        System.out.println("d="+d);
 	}
 	
 	public static void m0() {

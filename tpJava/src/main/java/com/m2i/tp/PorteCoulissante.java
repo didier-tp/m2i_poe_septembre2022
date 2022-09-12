@@ -1,4 +1,4 @@
-package com.m2i.tp.porte;
+package com.m2i.tp;
 
 public class PorteCoulissante extends Porte {
     private int translationGlissiere=0; //0 si ferm�e , 80 si ouvert (cm) 
