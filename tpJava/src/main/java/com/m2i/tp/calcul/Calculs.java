@@ -1,6 +1,13 @@
 package com.m2i.tp.calcul;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class Calculs {
+	
+	private static Logger logger = LoggerFactory.getLogger(Calculs.class);
+
+	
 
 	public static int division2(int a, int b) throws Exception {
 		if(b==0) 
@@ -20,12 +27,14 @@ public class Calculs {
 		if(x<0) 
 			throw new CalculException("racine carree de x negatif impossible sur double");
 		//NB: thrown un peu comme return : si appelé , on sort de la fonction
+		//logger.debug("dans racineCarre x="+x);
 		return Math.sqrt(x);
 	}
 	
 	public static double racineCarreAvecConversion(String sx) {
 		double x =Double.parseDouble(sx);//si sx="16" alors x=16.0 
 		//mais si sx="a6' alors NumberFormatException
+		//logger.debug("dans racineCarreAvecConversion sx="+sx);
 		return racineCarre(x);
 	}
 

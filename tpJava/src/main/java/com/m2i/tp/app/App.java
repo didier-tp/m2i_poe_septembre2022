@@ -2,6 +2,9 @@ package com.m2i.tp.app;
 
 import java.util.Date;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.m2i.tp.Avion;
 import com.m2i.tp.Bagage;
 import com.m2i.tp.Employe;
@@ -18,6 +21,9 @@ import com.m2i.tp.calcul.Calculs;
 
 
 public class App {
+	
+	private static Logger logger = LoggerFactory.getLogger(App.class);
+
 
 	public static void main(String[] args) {
 		//m0();
