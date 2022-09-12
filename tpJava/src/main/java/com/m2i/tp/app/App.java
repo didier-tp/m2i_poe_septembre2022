@@ -54,6 +54,20 @@ public class App {
 			e.printStackTrace();
 		}
 		
+		
+		double x=9;
+		double res3;
+		try {
+			res3 = Calculs.racineCarre(x);
+			System.out.println("pour x="+x + ", racinneCarre = " + res3);
+			x=-9;
+			res3 = Calculs.racineCarre(x);
+			System.out.println("pour x="+x + ", racinneCarre = " + res3);
+		} catch (RuntimeException e) {
+			 //e.printStackTrace();
+			 System.err.println(e.getMessage());
+		}
+		
 		System.out.println("suite ...");
 	}
 	

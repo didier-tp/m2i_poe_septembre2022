@@ -15,8 +15,10 @@ public class Calculs {
 		return a/b;
 	}
 	
-	public static double racineCarre(double x) {
-		//si x<0  racine carree de x negatif impossible sur double
+	public static double racineCarre(double x) throws RuntimeException  {
+		if(x<0) 
+			throw new RuntimeException("racine carree de x negatif impossible sur double");
+		//NB: thrown un peu comme return : si appelé , on sort de la fonction
 		return Math.sqrt(x);
 	}
 
