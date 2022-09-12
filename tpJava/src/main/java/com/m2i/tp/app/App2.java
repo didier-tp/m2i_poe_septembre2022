@@ -9,12 +9,24 @@ import java.util.List;
 import com.m2i.tp.Personne;
 
 final class ComparateurPersonneSelonAge implements Comparator<Personne>{
-
 	@Override
 	public int compare(Personne o1, Personne o2) {
 		return o1.getAge() - o2.getAge();
 	}
-	
+}
+
+final class ComparateurPersonneSelonNomPrenom implements Comparator<Personne>{
+	@Override
+	public int compare(Personne o1, Personne o2) {
+		if(o1.getNom()==null || o2.getNom()==null) return 0;
+		int resComparaisonNom =  o1.getNom().compareTo(o2.getNom());
+		if(resComparaisonNom!=0) {
+			return resComparaisonNom;
+		}
+		else {
+			return  o1.getPrenom().compareToIgnoreCase(o2.getPrenom());
+		}
+	}
 }
 
 public class App2 {
@@ -36,9 +48,9 @@ public class App2 {
 	public static void testManipCollection() {
 		List<Personne> listePersonnes = new ArrayList<>();
 		listePersonnes.add(new Personne("jean","Bon",31));
-		listePersonnes.add(new Personne("alain","Therieur",25));
+		listePersonnes.add(new Personne("alex","Therieur",25));
 		listePersonnes.add(new Personne("dupond","Durand",45));
-		listePersonnes.add(new Personne("alex","Toto",23));
+		listePersonnes.add(new Personne("alain","Therieur",23));
 		listePersonnes.add(new Personne("sophie","Zorro",53));
 		
 		//etape 1 (effectuer un filtrage)
@@ -52,8 +64,10 @@ public class App2 {
 		}
 		
 		//etape2: trier les personnes selon l'age ou bien l'ordre alphabetique sur nom (puis prenom):
-		Comparator<Personne> comparateurPersonneSelonAge = new ComparateurPersonneSelonAge();
-		Collections.sort(listePersonnes40ansAuplus,comparateurPersonneSelonAge);
+		//Comparator<Personne> comparateurPersonneSelonAge = new ComparateurPersonneSelonAge();
+		Comparator<Personne> comparateurPersonneSelonNomPrenom = new ComparateurPersonneSelonNomPrenom();
+		//Collections.sort(listePersonnes40ansAuplus,comparateurPersonneSelonAge);
+		Collections.sort(listePersonnes40ansAuplus,comparateurPersonneSelonNomPrenom);
 		
 		
 		//affiche listePersonnes40ansAuplus via le for() au sens forEach
