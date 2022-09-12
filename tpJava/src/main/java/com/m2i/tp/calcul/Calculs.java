@@ -22,5 +22,11 @@ public class Calculs {
 		//NB: thrown un peu comme return : si appelé , on sort de la fonction
 		return Math.sqrt(x);
 	}
+	
+	public static double racineCarreAvecConversion(String sx) {
+		double x =Double.parseDouble(sx);//si sx="16" alors x=16.0 
+		//mais si sx="a6' alors NumberFormatException
+		return racineCarre(x);
+	}
 
 }
