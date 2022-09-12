@@ -8,16 +8,17 @@ public class Calculs {
 		return a/b;
 	}
 	
-	
-	public static int division(int a, int b) throws RuntimeException {
+	//ArithmeticException est une classe prédéfinie de java
+	//qui herite de RuntimeException
+	public static int division(int a, int b) throws ArithmeticException {
 		if(b==0) 
-			throw new RuntimeException("division par 0 interdite");
+			throw new ArithmeticException("division par 0 interdite");
 		return a/b;
 	}
 	
-	public static double racineCarre(double x) throws RuntimeException  {
+	public static double racineCarre(double x) throws CalculException  {
 		if(x<0) 
-			throw new RuntimeException("racine carree de x negatif impossible sur double");
+			throw new CalculException("racine carree de x negatif impossible sur double");
 		//NB: thrown un peu comme return : si appelé , on sort de la fonction
 		return Math.sqrt(x);
 	}

@@ -11,6 +11,7 @@ import com.m2i.tp.Porte;
 import com.m2i.tp.PorteBattant;
 import com.m2i.tp.PorteCoulissante;
 import com.m2i.tp.Transportable;
+import com.m2i.tp.calcul.CalculException;
 import com.m2i.tp.calcul.Calculs;
 
 
@@ -63,7 +64,7 @@ public class App {
 			x=-9;
 			res3 = Calculs.racineCarre(x);
 			System.out.println("pour x="+x + ", racinneCarre = " + res3);
-		} catch (RuntimeException e) {
+		} catch (CalculException e) {
 			 //e.printStackTrace();
 			 System.err.println(e.getMessage());
 		}
