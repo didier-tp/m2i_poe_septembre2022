@@ -1,10 +1,21 @@
 package com.m2i.tp.app;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
 import com.m2i.tp.Personne;
+
+final class ComparateurPersonneSelonAge implements Comparator<Personne>{
+
+	@Override
+	public int compare(Personne o1, Personne o2) {
+		return o1.getAge() - o2.getAge();
+	}
+	
+}
 
 public class App2 {
 
@@ -39,6 +50,11 @@ public class App2 {
 				listePersonnes40ansAuplus.add(p);
 			}
 		}
+		
+		//etape2: trier les personnes selon l'age ou bien l'ordre alphabetique sur nom (puis prenom):
+		Comparator<Personne> comparateurPersonneSelonAge = new ComparateurPersonneSelonAge();
+		Collections.sort(listePersonnes40ansAuplus,comparateurPersonneSelonAge);
+		
 		
 		//affiche listePersonnes40ansAuplus via le for() au sens forEach
 		System.out.println("listePersonnes40ansAuplus:");
