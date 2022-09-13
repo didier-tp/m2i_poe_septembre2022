@@ -1,6 +1,10 @@
 package com.m2i.tp;
 
 public class Avion extends ObjetVolant {
+	
+	public enum Etats { AU_SOL , EN_VOL };
+	
+	private Etats etat = Etats.AU_SOL; //+get/set
 	 
 	private String nom; //ex : A320_ex1
 	public static final int NB_PLACES=200;
@@ -92,6 +96,14 @@ public class Avion extends ObjetVolant {
 
 	public Personne[] getTabPersonnes() {
 		return tabPersonnes;
+	}
+
+	public Etats getEtat() {
+		return etat;
+	}
+
+	public void setEtat(Etats etat) {
+		this.etat = etat;
 	}
 
 
