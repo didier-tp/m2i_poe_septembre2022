@@ -2,8 +2,10 @@ package com.m2i.tp.app;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,7 +52,8 @@ public class App4 {
 				if(p.getAge()>30)
 					listePersonnes.remove(p);
 			}
-			*/
+			//java.util.ConcurrentModificationException
+		    */
 			for(int i=listePersonnes.size()-1; i>=0 ; i--) {
 				Personne p = listePersonnes.get(i);
 				if(p.getAge()>30)
@@ -58,7 +61,14 @@ public class App4 {
 			}
 			System.out.println("listePersonnes apres modification="+listePersonnes);
 			//on génère un fichier "personnes2.csv" avec le contenu de listePersonnes.
-			
+			FileOutputStream of = new FileOutputStream("personnes2.csv");
+			//PrintStream ps = new PrintStream(of);
+			PrintWriter pw = new PrintWriter(of); //NB: PrintWriter est une variante de PrintStream un peu plus recente
+			pw.println("numero;prenom;nom;age");
+			for(Personne p : listePersonnes) {
+				pw.printf("%d;%s;%s;%d\n", p.getNumero(), p.getPrenom() , p.getNom() , p.getAge());
+			}
+			pw.close();
 			
 		} catch (IOException e) {
 			e.printStackTrace();
