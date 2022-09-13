@@ -29,7 +29,7 @@ public class App {
 		//m0();
         //m1();
         //m2();
-        //m3(); //avion
+        m3(); //avion
         //testPorte();
         m4();
         //java.util.Date d = new java.util.Date();
@@ -100,7 +100,15 @@ public class App {
 	}
 	
 	public static void m3() {
+		
 		Avion avion1 = new Avion("A320_ex1");
+		Avion.Etats etatAvion = avion1.getEtat();
+		System.out.println("etatAvion="+etatAvion);
+		System.out.println("etatAvion.ordinal()="+etatAvion.ordinal());
+		avion1.setEtat(Avion.Etats.EN_VOL);
+		System.out.println("nouvel etat de l'avion=" + avion1.getEtat());
+		
+		
 		avion1.addPers(new Employe("prenomPilote","nomPilote",45,"pilote",5000.0));
 		avion1.addPers(new Employe("prenomHotesse","nomHotesse",35,"hotesse",2500.0));
 		avion1.addPers(new Personne("prenomPassager1","nomPassager1",25));
