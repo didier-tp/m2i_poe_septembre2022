@@ -7,6 +7,8 @@ import java.util.Iterator;
 import java.util.List;
 
 import com.m2i.tp.Personne;
+import com.m2i.tp.dao.DaoPersonne;
+import com.m2i.tp.dao.DaoPersonneSimu;
 
 final class ComparateurPersonneSelonAge implements Comparator<Personne>{
 	@Override
@@ -41,8 +43,30 @@ public class App2 {
 		System.out.println("username="+username);
 		System.out.println("os.name="+System.getProperty("os.name"));
 		//testAncienneCollection();
-		testCollectionModerne();
-		testManipCollection();
+		//testCollectionModerne();
+		//testManipCollection();
+		testDaoSimu();
+	}
+	
+	public static void testDaoSimu() {
+	    DaoPersonne daoPersonne  = new DaoPersonneSimu();
+	    daoPersonne.addPersonne(new Personne(null,"jean","Bon",31));
+	    daoPersonne.addPersonne(new Personne(null,"alex","Therieur",25));
+	    daoPersonne.addPersonne(new Personne(null,"dupond","Durand",45));
+	    daoPersonne.addPersonne(new Personne(null,"alain","Therieur",23));
+	    
+	    Personne p1 = daoPersonne.findPersonneByNumero(1);
+	    System.out.println("p1="+p1); //p1.toString()
+	    p1.incrementerAge();
+	    daoPersonne.updatePersonne(p1);
+	    Personne p1MisAJour = daoPersonne.findPersonneByNumero(1);
+	    System.out.println("p1MisAJour="+p1MisAJour);
+	    
+	    daoPersonne.deletePersonne(1);
+	    
+	    List<Personne> listePers = daoPersonne.findAllPersonnes();
+	    System.out.println("listePers="+listePers);
+	    
 	}
 	
 	public static void testManipCollection() {
