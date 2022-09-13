@@ -9,7 +9,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
+import java.util.Properties;
 
 import com.m2i.tp.Personne;
 
@@ -24,7 +24,11 @@ public class App4 {
 		//getClass() possible dans une méthode qui n'est pas static
 		//si méthode static , App4.class
 		InputStream fluxLecture = App4.class.getClassLoader().getResourceAsStream("config.properties");
-		System.out.println("fluxLecture="+fluxLecture);
+		//le fichier config.properties sera recherché dans src/main/resources ou un endroit équivalent
+		//System.out.println("fluxLecture="+fluxLecture);
+		
+		/*
+		//solution de lecture qui fonctionne sur n'importe quel fichier texte
 		Scanner reader = new Scanner(fluxLecture);
 		String ligne;
 		while(reader.hasNextLine()){
@@ -32,6 +36,19 @@ public class App4 {
 			System.out.println("ligne="+ligne);
 		}
 		reader.close();
+		*/
+		
+		Properties properties  = new Properties(); //java.util.Properties
+		try {
+			properties.load(fluxLecture); //charge d'un coup toutes les propriétés du fichier
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		System.out.println("couleur choisie=" + properties.getProperty("couleur"));
+		System.out.println("aff choisi=" + properties.getProperty("aff"));
+		System.out.println("propriete couleurFond non renseignée="
+		     + properties.getProperty("couleurFond","white" /*valeur par defaut*/));
+		
 	}
 	
 	public static void testFichiers() {
