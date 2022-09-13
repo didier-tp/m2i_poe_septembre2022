@@ -43,6 +43,23 @@ public class App4 {
 			}while(ligne!=null);
 			fluxLectureAvecBuffer.close();
 			System.out.println("listePersonnes="+listePersonnes);
+			
+			//on modifie listePersonnes en enlevant les objets "Personne" qui ont plus de 30 ans
+			/*
+			for(Personne p : listePersonnes) {
+				if(p.getAge()>30)
+					listePersonnes.remove(p);
+			}
+			*/
+			for(int i=listePersonnes.size()-1; i>=0 ; i--) {
+				Personne p = listePersonnes.get(i);
+				if(p.getAge()>30)
+					listePersonnes.remove(i);
+			}
+			System.out.println("listePersonnes apres modification="+listePersonnes);
+			//on génère un fichier "personnes2.csv" avec le contenu de listePersonnes.
+			
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
