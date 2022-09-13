@@ -4,10 +4,12 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import com.m2i.tp.Personne;
 
@@ -15,9 +17,22 @@ public class App4 {
 
 	public static void main(String[] args) {
 		testFichiers();
-
+		testFichierProperties();
 	}
 
+	public static void testFichierProperties() {
+		//getClass() possible dans une méthode qui n'est pas static
+		//si méthode static , App4.class
+		InputStream fluxLecture = App4.class.getClassLoader().getResourceAsStream("config.properties");
+		System.out.println("fluxLecture="+fluxLecture);
+		Scanner reader = new Scanner(fluxLecture);
+		String ligne;
+		while(reader.hasNextLine()){
+			ligne=reader.next();
+			System.out.println("ligne="+ligne);
+		}
+		reader.close();
+	}
 	
 	public static void testFichiers() {
 		try {
@@ -69,7 +84,7 @@ public class App4 {
 				pw.printf("%d;%s;%s;%d\n", p.getNumero(), p.getPrenom() , p.getNom() , p.getAge());
 			}
 			pw.close();
-			//NB: sous eclipse , pour voir le fichier généré : click droit "Resfreh" sur projet tpJava
+			//NB: sous eclipse , pour voir le fichier généré : click droit "Refresh" sur projet tpJava
 			//                   puis click droit / open with ... / text editor sur fichier .csv
 			
 		} catch (IOException e) {
