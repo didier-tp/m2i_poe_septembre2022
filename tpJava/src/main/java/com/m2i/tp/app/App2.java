@@ -44,7 +44,7 @@ public class App2 {
 		System.out.println("os.name="+System.getProperty("os.name"));
 		//testAncienneCollection();
 		//testCollectionModerne();
-		//testManipCollection();
+		testManipCollection();
 		testDaoSimu();
 	}
 	
@@ -95,10 +95,14 @@ public class App2 {
 		
 		
 		//affiche listePersonnes40ansAuplus via le for() au sens forEach
+		int total_age=0; 
 		System.out.println("listePersonnes40ansAuplus:");
 		for(Personne p : listePersonnes40ansAuplus) {
 			System.out.println("\t" + p); //p.toString() implicitement déclenché
+			total_age= total_age + p.getAge();
 		}
+		double ageMoyen = total_age / listePersonnes40ansAuplus.size();
+		System.out.println("age moyen des personnes de 40ans au plus:" + ageMoyen);
 	}
 	
 	public static void testCollectionModerne() {

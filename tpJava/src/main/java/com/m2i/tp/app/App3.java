@@ -3,7 +3,7 @@ package com.m2i.tp.app;
 public class App3 {
 
 	public static void main(String[] args) {
-		// mini_tp_validation_bases_java
+		// mini_tp_validation_bases_java ****
 
 		//1 coder (dans com.m2i.tp) une nouvelle classe "Produit"
 		// comportant un attribut id de type Integer
