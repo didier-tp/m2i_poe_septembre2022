@@ -69,6 +69,8 @@ public class App4 {
 				pw.printf("%d;%s;%s;%d\n", p.getNumero(), p.getPrenom() , p.getNom() , p.getAge());
 			}
 			pw.close();
+			//NB: sous eclipse , pour voir le fichier généré : click droit "Resfreh" sur projet tpJava
+			//                   puis click droit / open with ... / text editor sur fichier .csv
 			
 		} catch (IOException e) {
 			e.printStackTrace();
