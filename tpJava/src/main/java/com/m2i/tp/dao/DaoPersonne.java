@@ -13,7 +13,10 @@ import com.m2i.tp.Personne;
  */
 public interface DaoPersonne {
 	
-	List<Personne> getAllPersonnes();
-	//...
+	List<Personne> findAllPersonnes();
+	Personne findPersonneByNumero(Integer numero);
+	Personne addPersonne(Personne p);
+	void updatePersonne(Personne p);
+	void deletePersonne(Integer numero);
 
 }
