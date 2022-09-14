@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import com.m2i.tp.Personne;
@@ -111,6 +112,15 @@ public class App2 {
         .mapToInt(p -> p.getAge())
         .average().orElse(Double.NaN);
 		System.out.println("moyenneAge="+moyenneAge);
+		
+		Optional<Personne> optPers = listePersonnes.stream().filter(p -> p.getAge() <= 18).findFirst();
+		//System.out.println("premiere personne mineure =" + optPers.get()); //NoSuchElementException si rien trouvé
+		//System.out.println("premiere personne mineure =" + optPers.orElse(null));
+		if(optPers.isPresent()) {
+			System.out.println("premiere personne mineure =" + optPers.get());
+		}else {
+			System.out.println("aucune personne mineure trouvée");
+		}
 	}
 	
 	public static void testManipCollection() {
