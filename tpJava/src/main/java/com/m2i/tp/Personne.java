@@ -26,6 +26,11 @@ public class Personne implements Transportable {
 		return this.poids; //V2
 	}
 	
+	public static int comparerSelonAge(Personne p1,Personne p2) {
+		return (p1.age - p2.age);
+		//comparaison retournant negatif si plus petit , 0 si identique , positif si plus grand
+	}
+	
 	public Integer getNumero() {
 		return numero;
 	}

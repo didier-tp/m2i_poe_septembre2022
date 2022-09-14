@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.m2i.tp.Personne;
 import com.m2i.tp.dao.DaoPersonne;
@@ -45,7 +46,8 @@ public class App2 {
 		System.out.println("os.name="+System.getProperty("os.name"));
 		//testAncienneCollection();
 		//testCollectionModerne();
-		testManipCollection();
+		//testManipCollection();
+		testStreamJava8();
 		//testDaoSimu();
 	}
 	
@@ -68,6 +70,28 @@ public class App2 {
 	    List<Personne> listePers = daoPersonne.findAllPersonnes();
 	    System.out.println("listePers="+listePers);
 	    
+	}
+	
+	public static void testStreamJava8() {
+		List<Personne> listePersonnes = new ArrayList<>();
+		listePersonnes.add(new Personne("jean","Bon",31));
+		listePersonnes.add(new Personne("alex","Therieur",25));
+		listePersonnes.add(new Personne("dupond","Durand",45));
+		listePersonnes.add(new Personne("alain","Therieur",23));
+		listePersonnes.add(new Personne("sophie","Zorro",53));
+		
+		//a faire en Tp (appliquer exemple page 93)
+		List<Personne> listePersonnesFiltreesTrieesEtTransformees =
+				listePersonnes.stream()
+				.filter((p)-> p.getAge() < 40)
+				.sorted((p1,p2)-> p1.getAge()-p2.getAge())
+				.map((p)-> { p.setNom(p.getNom().toUpperCase()); return p; })
+				.collect(Collectors.toList());
+		
+		System.out.println("listePersonnesFiltreesTrieesEtTransformees=");
+		for(Personne p : listePersonnesFiltreesTrieesEtTransformees) {
+			System.out.println("\t" + p);
+		}
 	}
 	
 	public static void testManipCollection() {
@@ -94,6 +118,17 @@ public class App2 {
 				/*(Personne o1, Personne o2) ->  o1.getAge() - o2.getAge() */
 				(p1, p2) ->  p1.getAge() - p2.getAge()
 				);
+		//si autre tri , le prochain tri  annule/remplace le resultat du tri précedent
+		
+		//variante du tri par ordre décroissant des ages:
+		Collections.sort(listePersonnes40ansAuplus,(p1, p2) ->  p2.getAge() - p1.getAge());
+		
+		//variante du tri par ordre croissant sur les prénoms:
+		Collections.sort(listePersonnes40ansAuplus,(p1, p2) ->  p1.getPrenom().compareTo(p2.getPrenom()));
+		
+		//variante du tri via reférence sur une fonction existante qui compare selon ordre croissant sur les ages:
+		Collections.sort(listePersonnes40ansAuplus, Personne::comparerSelonAge);
+		
 		
 		//affiche listePersonnes40ansAuplus via le for() au sens forEach
 		int total_age=0; 
