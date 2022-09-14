@@ -88,6 +88,42 @@ public class App2 {
 			}
 		}
 		
+		
+		Collections.sort(listePersonnes40ansAuplus,
+				/*(Personne o1, Personne o2) -> {	return o1.getAge() - o2.getAge();	}*/
+				/*(Personne o1, Personne o2) ->  o1.getAge() - o2.getAge() */
+				(p1, p2) ->  p1.getAge() - p2.getAge()
+				);
+		
+		//affiche listePersonnes40ansAuplus via le for() au sens forEach
+		int total_age=0; 
+		System.out.println("listePersonnes40ansAuplus:");
+		for(Personne p : listePersonnes40ansAuplus) {
+			System.out.println("\t" + p); //p.toString() implicitement déclenché
+			total_age= total_age + p.getAge();
+		}
+		double ageMoyen = total_age / listePersonnes40ansAuplus.size();
+		System.out.println("age moyen des personnes de 40ans au plus:" + ageMoyen);
+	}
+	
+	public static void testManipCollectionAvantJava8() {
+		List<Personne> listePersonnes = new ArrayList<>();
+		listePersonnes.add(new Personne("jean","Bon",31));
+		listePersonnes.add(new Personne("alex","Therieur",25));
+		listePersonnes.add(new Personne("dupond","Durand",45));
+		listePersonnes.add(new Personne("alain","Therieur",23));
+		listePersonnes.add(new Personne("sophie","Zorro",53));
+		
+		//etape 1 (effectuer un filtrage)
+		//on va creer une autre collection
+		//qui va comporter que les personnes qui au 40ans au plus:
+		List<Personne> listePersonnes40ansAuplus = new ArrayList<>();
+		for(Personne p : listePersonnes) {
+			if(p.getAge()<=40) {
+				listePersonnes40ansAuplus.add(p);
+			}
+		}
+		
 		//etape2: trier les personnes selon l'age ou bien l'ordre alphabetique sur nom (puis prenom):
 		//Comparator<Personne> comparateurPersonneSelonAge = new ComparateurPersonneSelonAge();
 		Comparator<Personne> comparateurPersonneSelonNomPrenom = new ComparateurPersonneSelonNomPrenom();
