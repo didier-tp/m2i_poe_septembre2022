@@ -11,7 +11,8 @@ public class App6 {
 		DaoPersonneJdbc daoPersonne  = new DaoPersonneJdbc();
         //Connection cn = daoPersonne.etablirConnection();
         //System.out.println("connection jdbc = " + cn);
-		daoPersonne.addPersonne(new Personne(99,"prenom99", "nom99" , 99));
+		Personne p1 = daoPersonne.addPersonne(new Personne(null,"prenom99", "nom99" , 99));
+		System.out.println("personne ajoutee = " + p1);
 		List<Personne> listePers = daoPersonne.findAllPersonnes();
 		listePers.stream().forEach(p -> System.out.println(p));
 	}
