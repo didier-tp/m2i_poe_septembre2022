@@ -80,7 +80,7 @@ public class DaoPersonneJdbc implements DaoPersonne {
 		try {
 			cn = etablirConnection();
 			String chRequeteSql = "INSERT INTO personne(prenom,nom,age) VALUES(?,?,?)";
-			PreparedStatement pstatement=cn.prepareStatement(chRequeteSql);
+			PreparedStatement pstatement=cn.prepareStatement(chRequeteSql,Statement.RETURN_GENERATED_KEYS );
 			//pstatement.setInt(1, p.getNumero()); //v1 sans 	auto_increment du numero
 			pstatement.setString(2-1, p.getPrenom());
 			pstatement.setString(3-1, p.getNom());
