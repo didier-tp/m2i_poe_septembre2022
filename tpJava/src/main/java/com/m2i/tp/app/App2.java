@@ -9,14 +9,15 @@ import java.util.List;
 import com.m2i.tp.Personne;
 import com.m2i.tp.dao.DaoPersonne;
 import com.m2i.tp.dao.DaoPersonneSimu;
-
+/*
+//remplacé par classe imbriquée ou bien lambda expression:
 final class ComparateurPersonneSelonAge implements Comparator<Personne>{
 	@Override
 	public int compare(Personne o1, Personne o2) {
 		return o1.getAge() - o2.getAge();
 	}
 }
-
+*/
 final class ComparateurPersonneSelonNomPrenom implements Comparator<Personne>{
 	@Override
 	public int compare(Personne o1, Personne o2) {
@@ -45,7 +46,7 @@ public class App2 {
 		//testAncienneCollection();
 		//testCollectionModerne();
 		testManipCollection();
-		testDaoSimu();
+		//testDaoSimu();
 	}
 	
 	public static void testDaoSimu() {
@@ -91,8 +92,15 @@ public class App2 {
 		//Comparator<Personne> comparateurPersonneSelonAge = new ComparateurPersonneSelonAge();
 		Comparator<Personne> comparateurPersonneSelonNomPrenom = new ComparateurPersonneSelonNomPrenom();
 		//Collections.sort(listePersonnes40ansAuplus,comparateurPersonneSelonAge);
-		Collections.sort(listePersonnes40ansAuplus,comparateurPersonneSelonNomPrenom);
-		
+		//Collections.sort(listePersonnes40ansAuplus,comparateurPersonneSelonNomPrenom);
+		Collections.sort(listePersonnes40ansAuplus,
+				new /* classe imbriquée anonyme qui implements */ Comparator<Personne>() {
+					@Override
+					public int compare(Personne o1, Personne o2) {
+						return o1.getAge() - o2.getAge();
+					}
+				}
+				);
 		
 		//affiche listePersonnes40ansAuplus via le for() au sens forEach
 		int total_age=0; 
