@@ -3,7 +3,10 @@ package com.m2i.tp.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -30,11 +33,38 @@ public class DaoPersonneJdbc implements DaoPersonne {
 		}
 		return cn;
 	}
+	
+	static void closeCn(Connection cn){
+		try { cn.close(); } catch (SQLException e) {e.printStackTrace();}
+		}
 
 	@Override
 	public List<Personne> findAllPersonnes() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Personne> listePers = new ArrayList<>();
+		Connection cn = null; 
+		try {
+			cn = etablirConnection();
+			Statement statement=cn.createStatement();
+			String chRequeteSql = "SELECT * FROM personne";
+			
+			ResultSet rs = statement.executeQuery(chRequeteSql);
+			while(rs.next()) {
+				listePers.add(new Personne(rs.getInt("numero"),
+						                   rs.getString("prenom"),
+						                   rs.getString("nom"),
+						                   rs.getInt("age")));
+			}
+			rs.close();
+			statement.close();
+		}
+		catch( SQLException ex) { 
+			ex.printStackTrace();
+        }
+		finally {
+			closeCn(cn);
+		}
+		
+		return listePers;
 	}
 
 	@Override
