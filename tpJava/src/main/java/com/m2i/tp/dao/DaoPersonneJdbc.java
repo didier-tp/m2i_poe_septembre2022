@@ -3,6 +3,7 @@ package com.m2i.tp.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -75,8 +76,25 @@ public class DaoPersonneJdbc implements DaoPersonne {
 
 	@Override
 	public Personne addPersonne(Personne p) {
-		// TODO Auto-generated method stub
-		return null;
+		Connection cn = null; 
+		try {
+			cn = etablirConnection();
+			String chRequeteSql = "INSERT INTO personne(numero,prenom,nom,age) VALUES(?,?,?,?)";
+			PreparedStatement pstatement=cn.prepareStatement(chRequeteSql);
+			pstatement.setInt(1, p.getNumero()); //v1 sans 	auto_increment du numero
+			pstatement.setString(2, p.getPrenom());
+			pstatement.setString(3, p.getNom());
+			pstatement.setInt(4, p.getAge());
+			pstatement.executeUpdate();
+			pstatement.close();
+		}
+		catch( SQLException ex) { 
+			ex.printStackTrace();
+        }
+		finally {
+			closeCn(cn);
+		}
+		return p;
 	}
 
 	@Override

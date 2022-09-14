@@ -13,7 +13,6 @@ CREATE TABLE personne(
 INSERT INTO personne (numero,prenom,nom,age) VALUES (1,'alain', 'Therieur' , 35);
 
 INSERT INTO personne (numero,prenom,nom,age) VALUES (2,'axelle', 'Aire' , 25 );
-INSERT INTO personne (prenom,nom,age) VALUES ('jean', 'Bon' , 40 );
 
 
 SELECT * FROM personne;
