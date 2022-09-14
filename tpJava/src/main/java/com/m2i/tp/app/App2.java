@@ -83,15 +83,18 @@ public class App2 {
 		//a faire en Tp (appliquer exemple page 93)
 		List<Personne> listePersonnesFiltreesTrieesEtTransformees =
 				listePersonnes.stream()
-				.filter((p)-> p.getAge() < 40)
+				.filter(p -> p.getAge() <= 40)
 				.sorted((p1,p2)-> p1.getAge()-p2.getAge())
-				.map((p)-> { p.setNom(p.getNom().toUpperCase()); return p; })
+				//.map(p -> { p.setNom(p.getNom().toUpperCase()); return p; }) //defaut : ça modifie les personnes de la liste d'origine
+				.map (p -> new Personne(p.getNumero(),p.getPrenom(),p.getNom().toUpperCase(),p.getAge()))
 				.collect(Collectors.toList());
 		
 		System.out.println("listePersonnesFiltreesTrieesEtTransformees=");
 		for(Personne p : listePersonnesFiltreesTrieesEtTransformees) {
 			System.out.println("\t" + p);
 		}
+		
+		System.out.println("listePersonnes="+listePersonnes);
 	}
 	
 	public static void testManipCollection() {
