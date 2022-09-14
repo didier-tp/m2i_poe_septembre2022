@@ -95,6 +95,22 @@ public class App2 {
 		}
 		
 		System.out.println("listePersonnes="+listePersonnes);
+		
+		//operation terminale = affichage en boucle via .forEach() et println()
+		listePersonnes.stream()
+				.filter(p -> p.getAge() <= 40)
+				.sorted((p1,p2)-> p1.getAge()-p2.getAge())
+				.forEach(p -> System.out.println("p="+p));
+		
+		int sommeAge = listePersonnes.stream()
+		        .map(p -> p.getAge())
+		        .reduce(0 , (x,y)->x+y); //.reduce est une operation terminale (d'un Stream de Integer on reduit ça en un seul Integer)
+		System.out.println("moyenne des ages = " + sommeAge/listePersonnes.size());
+		
+		Double moyenneAge = listePersonnes.stream()
+        .mapToInt(p -> p.getAge())
+        .average().orElse(Double.NaN);
+		System.out.println("moyenneAge="+moyenneAge);
 	}
 	
 	public static void testManipCollection() {
