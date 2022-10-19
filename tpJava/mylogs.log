@@ -28,3 +28,9 @@ com.m2i.tp.calcul.CalculException: racine carree de x negatif impossible sur dou
 	at com.m2i.tp.calcul.Calculs.racineCarreAvecConversion(Calculs.java:17) ~[classes/:?]
 	at com.m2i.tp.app.App.m4(App.java:76) ~[classes/:?]
 	at com.m2i.tp.app.App.main(App.java:34) ~[classes/:?]
+2022-09-19 11:07:42.877 ERROR [main] [com.m2i.tp.calcul.Calculs.racineCarreAvecConversion(Calculs.java:20)] - echec racineCarreAvecConversion avec x=-9.0
+com.m2i.tp.calcul.CalculException: racine carree de x negatif impossible sur double
+	at com.m2i.tp.calcul.Calculs.racineCarre(Calculs.java:42) ~[classes/:?]
+	at com.m2i.tp.calcul.Calculs.racineCarreAvecConversion(Calculs.java:17) ~[classes/:?]
+	at com.m2i.tp.app.App.m4(App.java:76) ~[classes/:?]
+	at com.m2i.tp.app.App.main(App.java:34) ~[classes/:?]

@@ -44,7 +44,7 @@ public class App {
 			//division remonte de execption de type RuntimeException
 			//et le try/catch est alors facultatif
 			int res1 = Calculs.division(a1, b1);
-			System.out.println("res1="+res1);
+			System.out.println("res1= "+res1);
 			b1=0;
 			res1 = Calculs.division(a1, b1);
 			System.out.println("res1="+res1);
