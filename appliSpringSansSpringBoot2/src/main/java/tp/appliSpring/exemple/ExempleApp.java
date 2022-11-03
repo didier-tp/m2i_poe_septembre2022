@@ -18,6 +18,9 @@ public class ExempleApp {
 	}
 	
 	public static void avecSpring() {
+		System.setProperty("spring.profiles.active", "v1,carre");
+		//System.setProperty("spring.profiles.active", "v2,carre");
+		//System.setProperty("spring.profiles.active", "v2,double");
 		ApplicationContext contextSpring = new AnnotationConfigApplicationContext(ExempleConfig.class);
 		// contextSpring représente un ensemble de composants pris en charge par spring
 		// et qui est initialisé selon une ou plusieurs classes de configuration.

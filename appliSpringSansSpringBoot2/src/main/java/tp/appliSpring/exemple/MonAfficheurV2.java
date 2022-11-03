@@ -1,8 +1,10 @@
 package tp.appliSpring.exemple;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
-//@Component
+@Profile("v2")
+@Component
 public class MonAfficheurV2 implements MonAfficheur {
 
 	@Override
