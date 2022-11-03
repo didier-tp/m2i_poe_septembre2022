@@ -3,7 +3,7 @@ package tp.appliSpring.exemple;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Component // équivalent à @Component("coordinateur")
+@Component // équivalent à @Component("coordinateurAvecInjectionParConstructeur")
            // car par défaut le nom/id du composant est nom classe java avec première lettre en minuscule
 //@Component("coordinateurQueJaime")
 public class CoordinateurAvecInjectionParConstructeur {
