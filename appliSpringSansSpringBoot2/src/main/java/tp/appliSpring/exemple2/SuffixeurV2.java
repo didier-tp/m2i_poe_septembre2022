@@ -1,10 +1,13 @@
 package tp.appliSpring.exemple2;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
+@Profile("v2")
+@Component
 public class SuffixeurV2 implements Suffixeur {
 	
- //@Component
+
  public static final String SUFFIXE="**";
 
 	@Override
