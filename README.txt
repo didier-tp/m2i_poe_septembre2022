@@ -1,6 +1,6 @@
 référentiel git (doc ,  exemples , enonces tp , solutions tp )
-pour les tps du cours java_fondamentaux
-poe 5septembre2022
+pour les tps du cours java_fondamentaux et du cours spring
+poe 5septembre2022 et novembre 2022
 
 ============
 URL actuelle: https://github.com/didier-tp/m2i_poe_septembre2022
