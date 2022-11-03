@@ -19,7 +19,8 @@ public class Exemple2App {
 		//l'appel à .getBean() permet de récupérer une référence sur un composant pris en charge
 		//par Spring:
 		//Encadreur encadreurPrisEnChargeParSpring = contextSpring.getBean(Encadreur.class);
-		Encadreur encadreurPrisEnChargeParSpring = (Encadreur) contextSpring.getBean("encadreurSimple");
+		Encadreur encadreurPrisEnChargeParSpring = contextSpring.getBean(EncadreurSimple.class);
+		//Encadreur encadreurPrisEnChargeParSpring = (Encadreur) contextSpring.getBean("encadreurSimple");
 		String msgRes = encadreurPrisEnChargeParSpring.encadrer("java_et_spring");
 		System.out.println("msgRes=" + msgRes);
 		
