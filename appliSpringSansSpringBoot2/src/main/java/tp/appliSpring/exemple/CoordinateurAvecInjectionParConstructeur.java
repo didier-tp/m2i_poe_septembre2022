@@ -12,11 +12,12 @@ public class CoordinateurAvecInjectionParConstructeur {
 	
 	private MonCalculateur monCalculateur = null;// référence vers calculateur à injecter
 	
-	//@Autowired implicite si une seule version du constructeur
+	//@Autowired //implicite si une seule version du constructeur
 	public CoordinateurAvecInjectionParConstructeur(MonAfficheur monAfficheur,MonCalculateur monCalculateur){
 	    this.monAfficheur = monAfficheur;
 	    this.monCalculateur=monCalculateur;
 	}
+
 
 	public void calculerEtAfficher() {
 		double x = 4;

@@ -21,6 +21,10 @@ public class Exemple2App {
 		String msgRes = encadreurPrisEnChargeParSpring.encadrer("java_et_spring");
 		System.out.println("msgRes=" + msgRes);
 		
+		Encadreur encadreur2PrisEnChargeParSpring = (Encadreur) contextSpring.getBean("encadreurBasic");
+		String msgRes2 = encadreur2PrisEnChargeParSpring.encadrer("java_et_spring");
+		System.out.println("msgRes2=" + msgRes2);
+		
 		((AnnotationConfigApplicationContext) contextSpring).close();
 
 	}
