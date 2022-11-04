@@ -10,8 +10,8 @@ import tp.appliSpring.exemple.MonCalculateur;
 public class Exemple2App {
 
 	public static void main(String[] args) {
-		//System.setProperty("spring.profiles.active", "v1");
-		System.setProperty("spring.profiles.active", "v2");
+		System.setProperty("spring.profiles.active", "v1");
+		//System.setProperty("spring.profiles.active", "v2");
 		ApplicationContext contextSpring = new AnnotationConfigApplicationContext(Exemple2Config.class);
 		// contextSpring représente un ensemble de composants pris en charge par spring
 		// et qui est initialisé selon une ou plusieurs classes de configuration.
@@ -21,11 +21,11 @@ public class Exemple2App {
 		//Encadreur encadreurPrisEnChargeParSpring = contextSpring.getBean(Encadreur.class);
 		Encadreur encadreurPrisEnChargeParSpring = contextSpring.getBean(EncadreurSimple.class);
 		//Encadreur encadreurPrisEnChargeParSpring = (Encadreur) contextSpring.getBean("encadreurSimple");
-		String msgRes = encadreurPrisEnChargeParSpring.encadrer("java_et_spring");
+		String msgRes = encadreurPrisEnChargeParSpring.encadrer("jaune");
 		System.out.println("msgRes=" + msgRes);
 		
 		Encadreur encadreur2PrisEnChargeParSpring = (Encadreur) contextSpring.getBean("encadreurBasic");
-		String msgRes2 = encadreur2PrisEnChargeParSpring.encadrer("java_et_spring");
+		String msgRes2 = encadreur2PrisEnChargeParSpring.encadrer("jaune");
 		System.out.println("msgRes2=" + msgRes2);
 		
 		((AnnotationConfigApplicationContext) contextSpring).close();

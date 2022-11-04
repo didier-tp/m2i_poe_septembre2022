@@ -1,10 +1,11 @@
 package tp.appliSpring.exemple2;
 
 import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import tp.traducteur.Traducteur;
 
 @Component
 public class EncadreurSimple implements Encadreur {
@@ -19,9 +20,14 @@ public class EncadreurSimple implements Encadreur {
 	//@Resource(name="...") fait d'abord une injection selon le nom logique précisé
 	//et @Resource() fait une injection par type comme @Autowired
 	private Suffixeur suffixeur;
+	
+	@Autowired
+	private Traducteur traducteur;
 
 	@Override
 	public String encadrer(String message) {
+		String msgTrad=traducteur.traduire(message);
+		if(msgTrad!=null ) message=msgTrad;
 		return suffixeur.suffixer(prefixeur.prefixer(message));
 	}
 
