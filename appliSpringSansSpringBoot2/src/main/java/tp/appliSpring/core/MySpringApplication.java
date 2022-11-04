@@ -1,5 +1,10 @@
 package tp.appliSpring.core;
 
+import java.sql.SQLException;
+
+import javax.sql.DataSource;
+
+import org.springframework.beans.BeansException;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -21,6 +26,13 @@ public class MySpringApplication {
 		ServiceCompte serviceCompte  = springContext.getBean(ServiceCompte.class);
 		Compte compte1 = serviceCompte.rechercherCompteParNumero(1L);
 		System.out.println("compte1="+compte1);
+		
+		try {
+			DataSource dataSource = springContext.getBean(DataSource.class);
+			System.out.println("dataSource= " + dataSource.getConnection());
+		}  catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 		springContext.close();
 	}

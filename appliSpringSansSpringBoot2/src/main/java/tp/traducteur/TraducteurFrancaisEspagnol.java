@@ -29,6 +29,8 @@ public class TraducteurFrancaisEspagnol implements Traducteur {
 			res="azul"; break;
 		case "jaune" :
 			res="amarillo"; break;
+		default :
+			res ="blanco";
 		}
 		//return enMaj?res.toUpperCase():res;
 		if(enMaj)

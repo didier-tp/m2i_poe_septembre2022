@@ -10,8 +10,8 @@ import tp.appliSpring.exemple.MonCalculateur;
 public class Exemple2App {
 
 	public static void main(String[] args) {
-		System.setProperty("spring.profiles.active", "v1");
-		//System.setProperty("spring.profiles.active", "v2");
+		//System.setProperty("spring.profiles.active", "v1");
+		System.setProperty("spring.profiles.active", "v2");
 		ApplicationContext contextSpring = new AnnotationConfigApplicationContext(Exemple2Config.class);
 		// contextSpring représente un ensemble de composants pris en charge par spring
 		// et qui est initialisé selon une ou plusieurs classes de configuration.
