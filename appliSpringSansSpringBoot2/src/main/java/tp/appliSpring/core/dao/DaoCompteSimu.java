@@ -4,8 +4,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.stereotype.Repository;
+
 import tp.appliSpring.core.entity.Compte;
 
+//@Component
+@Repository //@Repository signifie @Component de type DAO (Data Access Object)
 public class DaoCompteSimu implements DaoCompte {
 	
 	private Map<Long,Compte> mapComptes = new HashMap<>();
