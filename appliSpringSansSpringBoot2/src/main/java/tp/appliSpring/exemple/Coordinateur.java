@@ -1,7 +1,10 @@
 package tp.appliSpring.exemple;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+
+import tp.traducteur.Traducteur;
 
 @Component // équivalent à @Component("coordinateur")
            // car par défaut le nom/id du composant est nom classe java avec première lettre en minuscule
@@ -17,6 +20,11 @@ public class Coordinateur {
     @Autowired
 	private MonCalculateur monCalculateur = null;// référence vers calculateur à injecter
 	
+    @Autowired
+    @Qualifier("traducteurFrancaisEspagnol") //@Qualifier() en version spring
+              //permet de choisir la version que l'on veut injecter
+    private Traducteur traducteur = null;
+    
 	public Coordinateur(){
 	}
 
@@ -24,5 +32,6 @@ public class Coordinateur {
 		double x = 4;
 		double res = monCalculateur.calculer(x); // x*x ou bien 2*x ou bien ...
 		monAfficheur.afficher("res=" + res);// >> res=16 en v1 ou bien ** res=16
+		System.out.println("traduction de rouge=" + traducteur.traduire("rouge"));
 	}
 }
