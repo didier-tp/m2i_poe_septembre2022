@@ -1,8 +1,25 @@
 package tp.appliSpring.core.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="compte")
 public class Compte {
+	
+	 @Id
+	 @GeneratedValue(strategy = GenerationType.IDENTITY) 
+	    //@GeneratedValue pour que le id auto_incrémenté par mysql ou h2 ou ...
+	    //remonte bien en mémoire dans .numero de l"onjet java                     
 	 private Long numero;
+	 
+	 @Column(name="label" , length = 64)  //VARCHAR(64) 
 	 private String label;
+	 
 	 private Double solde;
 	 
 	public Compte() {
