@@ -36,7 +36,7 @@ public class TestServiceCompte {
 		
 		Compte compte1Relu = serviceCompte.rechercherCompteParNumero(numCompte1);
 		System.out.println("compte1Relu="+compte1Relu);
-		Assertions.assertTrue(compte1Relu.getNumero()==1L);
+		Assertions.assertTrue(compte1Relu.getNumero()==numCompte1);
 	}
 
 }
