@@ -8,6 +8,14 @@ package tp.traducteur;
  */
 
 public class TraducteurFrancaisEspagnol implements Traducteur {
+	
+	private boolean enMaj = false;
+	
+
+	public void setEnMaj(boolean enMaj) {
+		this.enMaj = enMaj;
+	}
+
 
 	@Override
 	public String traduire(String texte) {
@@ -22,7 +30,11 @@ public class TraducteurFrancaisEspagnol implements Traducteur {
 		case "jaune" :
 			res="amarillo"; break;
 		}
-		return res;
+		//return enMaj?res.toUpperCase():res;
+		if(enMaj)
+			return res.toUpperCase();
+		else
+			return res;
 	}
 
 }

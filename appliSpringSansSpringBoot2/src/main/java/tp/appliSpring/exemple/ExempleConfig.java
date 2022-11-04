@@ -25,7 +25,9 @@ public class ExempleConfig {
 	
 	@Bean //id/name par défaut = traducteurFrancaisEspagnol = nom de la méthode
 	public Traducteur traducteurFrancaisEspagnol() {
-		Traducteur traducteurFrancaisEspagnol = new TraducteurFrancaisEspagnol();
+		TraducteurFrancaisEspagnol traducteurFrancaisEspagnol = new TraducteurFrancaisEspagnol();
+		//traducteurFrancaisEspagnol.setEnMaj(false);
+		traducteurFrancaisEspagnol.setEnMaj(true);
 		return traducteurFrancaisEspagnol;
 	}
 	
