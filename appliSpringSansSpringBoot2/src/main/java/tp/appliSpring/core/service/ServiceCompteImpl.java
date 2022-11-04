@@ -2,7 +2,7 @@ package tp.appliSpring.core.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import tp.appliSpring.core.dao.DaoCompte;
@@ -13,10 +13,11 @@ import tp.appliSpring.core.entity.Compte;
 public class ServiceCompteImpl implements ServiceCompte {
 	
 	//@Autowired ici ou bien implicitement sur constructeur
+	//@Qualifier("daoCompteJpa")
 	private DaoCompte daoCompte;
 	
 	//@Autowired //@Autowired implicite si un seul constructeur
-	public ServiceCompteImpl(DaoCompte daoCompte) {
+	public ServiceCompteImpl(@Qualifier("daoCompteJpa")DaoCompte daoCompte) {
 		this.daoCompte = daoCompte;
 	}
 
