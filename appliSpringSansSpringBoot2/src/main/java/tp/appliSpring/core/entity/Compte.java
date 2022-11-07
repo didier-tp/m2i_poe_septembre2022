@@ -1,10 +1,13 @@
 package tp.appliSpring.core.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
@@ -12,6 +15,9 @@ import javax.persistence.Table;
 @Table(name="compte")
 @NamedQuery(name="Compte.findAll",query="SELECT c FROM Compte c")
 public class Compte {
+	
+	 @ManyToMany(mappedBy = "comptes")//coté secondaire avec mappedBy="nomJavaRelationInverse"
+	 private List<Client> clients;
 	
 	 @Id
 	 @GeneratedValue(strategy = GenerationType.IDENTITY) 
@@ -58,6 +64,14 @@ public class Compte {
 	}
 	public void setSolde(Double solde) {
 		this.solde = solde;
+	}
+
+	public List<Client> getClients() {
+		return clients;
+	}
+
+	public void setClients(List<Client> clients) {
+		this.clients = clients;
 	}
 	 
 	 
