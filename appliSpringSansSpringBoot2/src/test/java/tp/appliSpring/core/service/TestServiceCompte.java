@@ -48,12 +48,14 @@ public class TestServiceCompte {
 	
 	@Test
 	public void testRechercherComptesDunClient() {
+	
 		Compte compteA1Sauvegarde = serviceCompte.sauvegarderCompte(new Compte(null,"CompteA1",256.0));
 		Compte compteA2Sauvegarde = serviceCompte.sauvegarderCompte(new Compte(null,"CompteA2",156.0));
 		Client clientA = new Client(null,"aaa","HaHa","12 rue Elle 75001 Paris","email1");
 		clientA.getComptes().add(compteA1Sauvegarde);
 		clientA.getComptes().add(compteA2Sauvegarde);
 		clientA = serviceClient.sauvegarderClient(clientA);
+	
 		
 		Compte compteB1Sauvegarde = serviceCompte.sauvegarderCompte(new Compte(null,"CompteB1",236.0));
 		Compte compteB2Sauvegarde = serviceCompte.sauvegarderCompte(new Compte(null,"CompteB2",136.0));
@@ -73,14 +75,14 @@ public class TestServiceCompte {
 	@Test
 	//@Order(1)
 	public void testRechercherCompte() {
-		Compte compte1 = new Compte(null,"CompteXy",200.0);
-		serviceCompte.sauvegarderCompte(compte1);
-		Long numCompte1 = compte1.getNumero(); //numero auto incrémenté
-		System.out.println("numCompte1="+numCompte1);
+		Compte compteXy = new Compte(null,"CompteXy",200.0);
+		serviceCompte.sauvegarderCompte(compteXy);
+		Long numCompteXy = compteXy.getNumero(); //numero auto incrémenté
+		System.out.println("numCompteXy="+numCompteXy);
 		
-		Compte compte1Relu = serviceCompte.rechercherCompteParNumero(numCompte1);
-		System.out.println("compte1Relu="+compte1Relu);
-		Assertions.assertTrue(compte1Relu.getNumero()==numCompte1);
+		Compte compteXyRelu = serviceCompte.rechercherCompteParNumero(numCompteXy);
+		System.out.println("compteXyRelu="+compteXyRelu);
+		Assertions.assertTrue(compteXyRelu.getNumero()==numCompteXy);
 	}
 	
 	@Test

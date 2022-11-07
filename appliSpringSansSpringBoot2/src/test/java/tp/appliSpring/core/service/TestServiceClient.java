@@ -13,6 +13,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import tp.appliSpring.core.MySpringApplication;
 import tp.appliSpring.core.entity.Client;
+import tp.appliSpring.core.entity.Compte;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes={MySpringApplication.class}) //java config
@@ -22,6 +23,21 @@ public class TestServiceClient {
 	
 	@Autowired
 	private ServiceClient serviceClient; //à tester
+	
+	@Autowired
+	private ServiceCompte serviceCompte; //pour aider à tester
+	
+	@Test
+	public void testerRechercherUnClient() {
+		Compte compteX1Sauvegarde = serviceCompte.sauvegarderCompte(new Compte(null,"CompteX1",256.0));
+		Compte compteX2Sauvegarde = serviceCompte.sauvegarderCompte(new Compte(null,"CompteX2",156.0));
+		Client clientXy = new Client(null,"jean","Xxx","12 rue Elle 75001 Paris","email1");
+		clientXy.getComptes().add(compteX1Sauvegarde);
+		clientXy.getComptes().add(compteX2Sauvegarde);
+		clientXy= serviceClient.sauvegarderClient(clientXy);
+		Client clientXyRelu = serviceClient.rechercherClientParNumero(clientXy.getNumero());
+		logger.debug("clientXyRelu="+clientXyRelu);
+	}
 	
 	
 	@Test
