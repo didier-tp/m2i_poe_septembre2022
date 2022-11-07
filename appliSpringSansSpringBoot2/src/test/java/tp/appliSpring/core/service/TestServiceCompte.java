@@ -12,6 +12,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import tp.appliSpring.core.MySpringApplication;
+import tp.appliSpring.core.entity.Client;
 import tp.appliSpring.core.entity.Compte;
 
 @ExtendWith(SpringExtension.class)
@@ -22,6 +23,10 @@ public class TestServiceCompte {
 	
 	@Autowired
 	private ServiceCompte serviceCompte; //à tester
+	
+	
+	@Autowired
+	private ServiceClient serviceClient; //à aider à tester
 	
 	/*
 	@BeforeEach //ou bien @BeforeAll
@@ -39,6 +44,30 @@ public class TestServiceCompte {
 		serviceCompte.sauvegarderCompte(new Compte(null,"CompteZ2",156.0));
 		List<Compte> comptes = serviceCompte.rechercherTousComptes();
 		logger.debug("comptes="+comptes);
+	}
+	
+	@Test
+	public void testRechercherComptesDunClient() {
+		Compte compteA1Sauvegarde = serviceCompte.sauvegarderCompte(new Compte(null,"CompteA1",256.0));
+		Compte compteA2Sauvegarde = serviceCompte.sauvegarderCompte(new Compte(null,"CompteA2",156.0));
+		Client clientA = new Client(null,"aaa","HaHa","12 rue Elle 75001 Paris","email1");
+		clientA.getComptes().add(compteA1Sauvegarde);
+		clientA.getComptes().add(compteA2Sauvegarde);
+		clientA = serviceClient.sauvegarderClient(clientA);
+		
+		Compte compteB1Sauvegarde = serviceCompte.sauvegarderCompte(new Compte(null,"CompteB1",236.0));
+		Compte compteB2Sauvegarde = serviceCompte.sauvegarderCompte(new Compte(null,"CompteB2",136.0));
+		Client clientB = new Client(null,"bbb","BeBe","12 rue Elle 75002 Paris","email2");
+		clientB.getComptes().add(compteB1Sauvegarde);
+		clientB.getComptes().add(compteB2Sauvegarde);
+		clientB = serviceClient.sauvegarderClient(clientB);
+		
+		List<Compte> comptesDuClientA = serviceCompte.rechercherComptesDuClient(clientA.getNumero());
+		logger.debug("comptesDuClientA="+comptesDuClientA);
+		Assertions.assertTrue(comptesDuClientA.size()==2);
+		
+		List<Compte> comptesDuClientB = serviceCompte.rechercherComptesDuClient(clientB.getNumero());
+		logger.debug("comptesDuClientB="+comptesDuClientB);
 	}
 	
 	@Test

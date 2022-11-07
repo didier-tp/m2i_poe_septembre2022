@@ -81,7 +81,7 @@ public class DaoCompteJpa implements DaoCompte {
 	@Override
 	public List<Compte> findByCustomerNumber(Long numCli) {
 		return entityManager.createNamedQuery("Compte.findByCustomerNumber", Compte.class)
-				.setParameter(1, numCli) //1 pour paramètre en position 1 = le premier ? de la requete
+				.setParameter(1, numCli) //1 pour paramètre en position 1 = ?1 de la requete
 	            .getResultList();
 	}
 

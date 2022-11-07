@@ -16,7 +16,7 @@ import javax.persistence.Table;
 @Table(name="compte")
 @NamedQuery(name="Compte.findAll",query="SELECT c FROM Compte c")
 @NamedQuery(name="Compte.findByCustomerNumber",
-            query="SELECT c FROM Compte c JOIN c.clients cli WHERE cli.numero = ?")
+            query="SELECT c FROM Compte c JOIN c.clients cli WHERE cli.numero = ?1")
 public class Compte {
 	
 	 @ManyToMany(mappedBy = "comptes")//coté secondaire avec mappedBy="nomJavaRelationInverse"
