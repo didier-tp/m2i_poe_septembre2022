@@ -47,4 +47,10 @@ public class DaoCompteSimu implements DaoCompte {
 		mapComptes.remove(numCpt);
 	}
 
+	@Override
+	public List<Compte> findByCustomerNumber(Long numCli) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

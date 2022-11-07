@@ -33,8 +33,7 @@ public class ServiceCompteImpl implements ServiceCompte {
 
 	@Override
 	public List<Compte> rechercherComptesDuClient(long numClient) {
-		// sera codé plus tard
-		return null;
+		return daoCompte.findByCustomerNumber(numClient);
 	}
 
 	@Override

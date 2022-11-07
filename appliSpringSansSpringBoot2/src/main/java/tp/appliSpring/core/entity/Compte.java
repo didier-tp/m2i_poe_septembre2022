@@ -1,5 +1,6 @@
 package tp.appliSpring.core.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -17,7 +18,7 @@ import javax.persistence.Table;
 public class Compte {
 	
 	 @ManyToMany(mappedBy = "comptes")//coté secondaire avec mappedBy="nomJavaRelationInverse"
-	 private List<Client> clients;
+	 private List<Client> clients = new ArrayList<>();
 	
 	 @Id
 	 @GeneratedValue(strategy = GenerationType.IDENTITY) 

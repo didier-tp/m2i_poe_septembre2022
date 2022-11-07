@@ -77,6 +77,13 @@ public class DaoCompteJpa implements DaoCompte {
 		
 		//avec @NamedQuery(name="Compte.findAll",query="SELECT c FROM Compte c") sur classe Compte
 	}
+	
+	@Override
+	public List<Compte> findByCustomerNumber(Long numCli) {
+		return entityManager.createNamedQuery("Compte.findByCustomerNumber", Compte.class)
+				.setParameter(1, numCli) //1 pour paramètre en position 1 = le premier ? de la requete
+	            .getResultList();
+	}
 
 	@Override
 	@Transactional
@@ -84,5 +91,8 @@ public class DaoCompteJpa implements DaoCompte {
 		Compte compte = entityManager.find(Compte.class, numCpt);
 		entityManager.remove(compte);
 	}
+
+
+	
 
 }

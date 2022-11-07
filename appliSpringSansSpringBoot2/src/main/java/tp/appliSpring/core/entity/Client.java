@@ -1,5 +1,6 @@
 package tp.appliSpring.core.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -25,7 +26,7 @@ public class Client {
 	    joinColumns = { @JoinColumn(name="numClient")} ,
 	    inverseJoinColumns = { @JoinColumn(name="numCompte")}
 	)
-	private List<Compte> comptes;
+	private List<Compte> comptes=new ArrayList<>();
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
