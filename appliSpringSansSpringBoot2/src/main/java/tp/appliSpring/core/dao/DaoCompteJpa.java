@@ -3,6 +3,7 @@ package tp.appliSpring.core.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NamedQuery;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
@@ -69,8 +70,12 @@ public class DaoCompteJpa implements DaoCompte {
 
 	@Override
 	public List<Compte> findAll() {
-		return entityManager.createQuery("SELECT c FROM Compte c", Compte.class)
-				            .getResultList();
+		/*return entityManager.createQuery("SELECT c FROM Compte c", Compte.class)
+				            .getResultList();*/
+		return entityManager.createNamedQuery("Compte.findAll", Compte.class)
+	            .getResultList();
+		
+		//avec @NamedQuery(name="Compte.findAll",query="SELECT c FROM Compte c") sur classe Compte
 	}
 
 	@Override

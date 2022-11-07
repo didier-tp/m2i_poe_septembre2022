@@ -5,10 +5,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="compte")
+@NamedQuery(name="Compte.findAll",query="SELECT c FROM Compte c")
 public class Compte {
 	
 	 @Id

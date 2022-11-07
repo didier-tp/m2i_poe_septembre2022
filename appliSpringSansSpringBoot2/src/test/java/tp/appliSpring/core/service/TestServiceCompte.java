@@ -1,7 +1,8 @@
 package tp.appliSpring.core.service;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.slf4j.Logger;
@@ -31,6 +32,14 @@ public class TestServiceCompte {
 			this.serviceCompte  = springContext.getBean(ServiceCompte.class);
 	}
 	*/
+	
+	@Test
+	public void testRechercherTousLesCompte() {
+		serviceCompte.sauvegarderCompte(new Compte(null,"CompteZ1",256.0));
+		serviceCompte.sauvegarderCompte(new Compte(null,"CompteZ2",156.0));
+		List<Compte> comptes = serviceCompte.rechercherTousComptes();
+		logger.debug("comptes="+comptes);
+	}
 	
 	@Test
 	//@Order(1)
