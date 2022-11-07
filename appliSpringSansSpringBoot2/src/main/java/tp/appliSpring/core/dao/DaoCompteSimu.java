@@ -53,4 +53,10 @@ public class DaoCompteSimu implements DaoCompte {
 		return null;
 	}
 
+	@Override
+	public Compte findWithOperationsById(Long numCompteXy) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

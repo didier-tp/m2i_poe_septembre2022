@@ -51,4 +51,9 @@ public class ServiceCompteImpl implements ServiceCompte {
 		//sera codé plus tard
 	}
 
+	@Override
+	public Compte rechercherCompteAvecOperationsParNumero(Long numCompteXy) {
+		return daoCompte.findWithOperationsById(numCompteXy);
+	}
+
 }

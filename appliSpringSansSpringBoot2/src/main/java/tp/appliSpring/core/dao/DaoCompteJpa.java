@@ -3,12 +3,12 @@ package tp.appliSpring.core.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.NamedQuery;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import tp.appliSpring.core.entity.Client;
 import tp.appliSpring.core.entity.Compte;
 
 @Repository //ou bien @Component
@@ -90,6 +90,14 @@ public class DaoCompteJpa implements DaoCompte {
 	public void deleteById(Long numCpt) {
 		Compte compte = entityManager.find(Compte.class, numCpt);
 		entityManager.remove(compte);
+	}
+
+
+	@Override
+	public Compte findWithOperationsById(Long numCompte) {
+		return entityManager.createNamedQuery("Compte.findWithOperationsById", Compte.class)
+				.setParameter(1,numCompte)
+	            .getSingleResult();
 	}
 
 

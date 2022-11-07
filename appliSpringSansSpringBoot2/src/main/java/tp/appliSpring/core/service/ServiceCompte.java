@@ -10,4 +10,5 @@ public interface ServiceCompte {
 	Compte sauvegarderCompte(Compte compte);
 	void supprimerCompte(long numCpt);
 	void transferer(double montant, long numCptDeb, long numCptCred);
+	Compte rechercherCompteAvecOperationsParNumero(Long numCompteXy);
 }

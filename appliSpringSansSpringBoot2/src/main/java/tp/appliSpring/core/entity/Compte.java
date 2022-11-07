@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -17,6 +18,8 @@ import javax.persistence.Table;
 @NamedQuery(name="Compte.findAll",query="SELECT c FROM Compte c")
 @NamedQuery(name="Compte.findByCustomerNumber",
             query="SELECT c FROM Compte c JOIN c.clients cli WHERE cli.numero = ?1")
+@NamedQuery(name="Compte.findWithOperationsById",
+             query="SELECT c FROM Compte c LEFT JOIN FETCH c.operations WHERE c.numero = ?1")
 public class Compte {
 	
 	 @ManyToMany(mappedBy = "comptes")//coté secondaire avec mappedBy="nomJavaRelationInverse"
@@ -32,6 +35,9 @@ public class Compte {
 	 private String label;
 	 
 	 private Double solde;
+	 
+	 @OneToMany(mappedBy="compte")
+	 private List<Operation> operations;
 	 
 	public Compte() {
 		super();
@@ -75,6 +81,14 @@ public class Compte {
 
 	public void setClients(List<Client> clients) {
 		this.clients = clients;
+	}
+
+	public List<Operation> getOperations() {
+		return operations;
+	}
+
+	public void setOperations(List<Operation> operations) {
+		this.operations = operations;
 	}
 	 
 	 

@@ -10,4 +10,5 @@ public interface DaoCompte {
 	 void deleteById(Long numCpt);
 	 //...
 	 List<Compte> findByCustomerNumber(Long numCli);
+	Compte findWithOperationsById(Long numCompteXy);
 }

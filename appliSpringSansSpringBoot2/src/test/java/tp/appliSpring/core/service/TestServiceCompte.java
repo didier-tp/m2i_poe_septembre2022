@@ -1,5 +1,6 @@
 package tp.appliSpring.core.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.junit.jupiter.api.Assertions;
@@ -12,8 +13,10 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import tp.appliSpring.core.MySpringApplication;
+import tp.appliSpring.core.dao.DaoOperation;
 import tp.appliSpring.core.entity.Client;
 import tp.appliSpring.core.entity.Compte;
+import tp.appliSpring.core.entity.Operation;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes={MySpringApplication.class}) //java config
@@ -26,7 +29,10 @@ public class TestServiceCompte {
 	
 	
 	@Autowired
-	private ServiceClient serviceClient; //à aider à tester
+	private ServiceClient serviceClient; //pour aider à tester
+	
+	@Autowired
+	private DaoOperation daoOperation; //pour aider à tester
 	
 	/*
 	@BeforeEach //ou bien @BeforeAll
@@ -78,11 +84,22 @@ public class TestServiceCompte {
 		Compte compteXy = new Compte(null,"CompteXy",200.0);
 		serviceCompte.sauvegarderCompte(compteXy);
 		Long numCompteXy = compteXy.getNumero(); //numero auto incrémenté
-		System.out.println("numCompteXy="+numCompteXy);
 		
-		Compte compteXyRelu = serviceCompte.rechercherCompteParNumero(numCompteXy);
-		System.out.println("compteXyRelu="+compteXyRelu);
+		Operation opXy1 = new Operation(null,"achat bonbons" , -4.67 ); opXy1.setCompte(compteXy);
+		daoOperation.save(opXy1);
+		
+		Operation opXy2 = new Operation(null,"achat gateau" , -14.67 ); opXy2.setCompte(compteXy);
+		daoOperation.save(opXy2);
+		
+		//Compte compteXyRelu = serviceCompte.rechercherCompteParNumero(numCompteXy);
+		Compte compteXyRelu = serviceCompte.rechercherCompteAvecOperationsParNumero(numCompteXy);
+		logger.debug("compteXyRelu="+compteXyRelu);
 		Assertions.assertTrue(compteXyRelu.getNumero()==numCompteXy);
+		logger.debug("operations du compte compteXy:");
+		for(Operation op : compteXyRelu.getOperations()) {
+			logger.debug("\t"+op);
+		}
+		
 	}
 	
 	@Test
