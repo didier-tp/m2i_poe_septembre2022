@@ -43,5 +43,10 @@ public class ServiceClientImpl implements ServiceClient {
 		daoClient.deleteById(numCpt);
 	}
 
+	@Override
+	public Client rechercherClientAvecComptesParNumero(long numeroCli) {
+		return daoClient.findWithAccountById(numeroCli);
+	}
+
 	
 }

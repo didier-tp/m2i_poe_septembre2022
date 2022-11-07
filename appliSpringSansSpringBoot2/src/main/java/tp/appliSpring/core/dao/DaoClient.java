@@ -9,4 +9,5 @@ public interface DaoClient {
 	 List<Client> findAll();
 	 void deleteById(Long numCli);
 	 //...
+	Client findWithAccountById(long numeroCli);
 }

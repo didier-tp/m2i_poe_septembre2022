@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,12 +17,14 @@ import javax.persistence.Table;
 @Entity
 @Table(name="client")
 @NamedQuery(name="Client.findAll",query="SELECT c FROM Client c")
+@NamedQuery(name="Client.findWithAccountById",
+            query="SELECT c FROM Client c LEFT JOIN FETCH c.comptes WHERE c.numero = ?1")
 public class Client {
 	
 	//un client aura souvent plusieurs comptes
 	//bien que rare , un compte peut être associé à plusieurs client (ex: co-propriété)
 	//many-to-many , avec coté principal "client" et coté secondaire "compte"
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "client_compte" ,
 	    joinColumns = { @JoinColumn(name="numClient")} ,
 	    inverseJoinColumns = { @JoinColumn(name="numCompte")}

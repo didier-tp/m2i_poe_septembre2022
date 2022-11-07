@@ -35,8 +35,12 @@ public class TestServiceClient {
 		clientXy.getComptes().add(compteX1Sauvegarde);
 		clientXy.getComptes().add(compteX2Sauvegarde);
 		clientXy= serviceClient.sauvegarderClient(clientXy);
-		Client clientXyRelu = serviceClient.rechercherClientParNumero(clientXy.getNumero());
-		logger.debug("clientXyRelu="+clientXyRelu);
+		//Client clientXyRelu = serviceClient.rechercherClientParNumero(clientXy.getNumero());
+		Client clientXyRelu = serviceClient.rechercherClientAvecComptesParNumero(clientXy.getNumero());
+		logger.debug("clientXyRelu="+clientXyRelu.toString());
+		for(Compte cpt : clientXyRelu.getComptes()) {
+			logger.debug("\t"+cpt);
+		}
 	}
 	
 	

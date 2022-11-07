@@ -56,4 +56,12 @@ public class DaoClientJpa implements DaoClient {
 		entityManager.remove(Client);
 	}
 
+
+	@Override
+	public Client findWithAccountById(long numeroCli) {
+		return entityManager.createNamedQuery("Client.findWithAccountById", Client.class)
+				.setParameter(1,numeroCli)
+	            .getSingleResult();
+	}
+
 }
