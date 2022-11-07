@@ -74,6 +74,7 @@ public class DaoCompteJpa implements DaoCompte {
 	}
 
 	@Override
+	@Transactional
 	public void deleteById(Long numCpt) {
 		Compte compte = entityManager.find(Compte.class, numCpt);
 		entityManager.remove(compte);

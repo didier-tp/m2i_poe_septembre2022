@@ -1,6 +1,7 @@
 package tp.appliSpring.core.service;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.slf4j.Logger;
@@ -32,6 +33,7 @@ public class TestServiceCompte {
 	*/
 	
 	@Test
+	//@Order(1)
 	public void testRechercherCompte() {
 		Compte compte1 = new Compte(null,"CompteXy",200.0);
 		serviceCompte.sauvegarderCompte(compte1);
@@ -44,6 +46,7 @@ public class TestServiceCompte {
 	}
 	
 	@Test
+	//@Order(2)
 	 public void testAjoutEtRelectureEtSuppression() {
 	//hypothese : base avec tables vides et existantes au lancement du test
 		Compte compte = new Compte(null,"compteA",100.0);
