@@ -11,4 +11,5 @@ public interface ServiceCompte {
 	void supprimerCompte(long numCpt);
 	void transferer(double montant, long numCptDeb, long numCptCred);
 	Compte rechercherCompteAvecOperationsParNumero(Long numCompteXy);
+	List<Compte> rechercherComptesViaSoldeMini(double soldeMini);
 }

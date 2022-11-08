@@ -106,11 +106,21 @@ public class TestServiceCompte {
 	}
 
 	@Test
-	public void testRechercherTousLesCompte() {
+	public void testRechercherTousLesComptes() {
 		serviceCompte.sauvegarderCompte(new Compte(null, "CompteZ1", 256.0));
 		serviceCompte.sauvegarderCompte(new Compte(null, "CompteZ2", 156.0));
 		List<Compte> comptes = serviceCompte.rechercherTousComptes();
 		logger.debug("comptes=" + comptes);
+	}
+	
+	@Test
+	public void testRechercherComptesAvecSoldeMini() {
+		serviceCompte.sauvegarderCompte(new Compte(null, "CompteW1", 256.0));
+		serviceCompte.sauvegarderCompte(new Compte(null, "CompteW3", -6.0));
+		serviceCompte.sauvegarderCompte(new Compte(null, "CompteW2", 156.0));
+		serviceCompte.sauvegarderCompte(new Compte(null, "CompteW4", -16.0));
+		List<Compte> comptes = serviceCompte.rechercherComptesViaSoldeMini(0.0);
+		logger.debug("comptes avec soldes positifs =" + comptes);
 	}
 
 	@Test

@@ -87,4 +87,9 @@ public class ServiceCompteImpl implements ServiceCompte {
 		return daoCompte.findWithOperationsById(numCompteXy);
 	}
 
+	@Override
+	public List<Compte> rechercherComptesViaSoldeMini(double soldeMini) {
+		return daoCompte.findBySoldeGreaterThanEqual(soldeMini);
+	}
+
 }
