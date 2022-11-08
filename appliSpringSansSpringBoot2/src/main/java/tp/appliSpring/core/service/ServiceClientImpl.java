@@ -17,13 +17,14 @@ public class ServiceClientImpl implements ServiceClient {
 	private DaoClient daoClient;
 	
 	//@Autowired //@Autowired implicite si un seul constructeur
-	public ServiceClientImpl(@Qualifier("daoClientJpa")DaoClient daoClient) {
+	/* ancienne version sans spring-data: public ServiceClientImpl(@Qualifier("daoClientJpa")DaoClient daoClient) { */
+	public ServiceClientImpl(DaoClient daoClient) {
 		this.daoClient = daoClient;
 	}
 
 	@Override
 	public Client rechercherClientParNumero(long numero) {
-		return daoClient.findById(numero);
+		return daoClient.findById(numero).orElse(null);
 	}
 
 	@Override

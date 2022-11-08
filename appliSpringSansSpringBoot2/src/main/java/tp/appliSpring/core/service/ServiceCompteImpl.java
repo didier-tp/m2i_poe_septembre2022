@@ -25,14 +25,15 @@ public class ServiceCompteImpl implements ServiceCompte {
 	private DaoOperation daoOperation; 
 	
 	//@Autowired //@Autowired implicite si un seul constructeur
-	public ServiceCompteImpl(@Qualifier("daoCompteJpa")DaoCompte daoCompte , DaoOperation daoOperation) {
+	/* ancienne version sans spring-data : public ServiceCompteImpl(@Qualifier("daoCompteJpa")DaoCompte daoCompte , DaoOperation daoOperation) { */
+	public ServiceCompteImpl(DaoCompte daoCompte , DaoOperation daoOperation) {
 		this.daoCompte = daoCompte;
 		this.daoOperation = daoOperation;
 	}
 
 	@Override
 	public Compte rechercherCompteParNumero(long numero) {
-		return daoCompte.findById(numero);
+		return daoCompte.findById(numero).orElse(null);
 	}
 
 	@Override
@@ -60,7 +61,7 @@ public class ServiceCompteImpl implements ServiceCompte {
 	//maintenant @Transactional est placé dans le haut de la classe
 	public void transferer(double montant, long numCptDeb, long numCptCred) {
 		try {
-			Compte cptDeb = daoCompte.findById(numCptDeb);
+			Compte cptDeb = daoCompte.findById(numCptDeb).orElse(null);
 			if(cptDeb.getSolde() < montant)
 				throw new SoldeInsuffisantException("solde insuffisant sur compte " + numCptDeb);
 			cptDeb.setSolde(cptDeb.getSolde() - montant);
@@ -69,7 +70,7 @@ public class ServiceCompteImpl implements ServiceCompte {
 			opDebit.setCompte(cptDeb);	daoOperation.save(opDebit);
 			daoCompte.save(cptDeb); //v1 ou v2 sans .save() si @Transactional
 			
-			Compte cptCred = daoCompte.findById(numCptCred);
+			Compte cptCred = daoCompte.findById(numCptCred).orElse(null);
 			cptCred.setSolde(cptCred.getSolde() + montant);
 			//créer, rattacher et enregistrer un objet Operation sur le crédit
 			Operation opCredit = new Operation(null, "crédit suite au virement", montant);

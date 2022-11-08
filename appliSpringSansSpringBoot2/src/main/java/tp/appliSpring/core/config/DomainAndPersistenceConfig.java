@@ -16,7 +16,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@EnableJpaRepositories //demander à générer automatiquement les dao JPA (de Spring Data) en fonction des interfaces
+@EnableJpaRepositories(basePackages = { "tp.appliSpring.core.dao" })     //demander à générer automatiquement les dao JPA (de Spring Data) en fonction des interfaces
 @EnableTransactionManagement() // "transactionManager" (not "txManager") is expected !!!
 @ComponentScan(basePackages = { "tp.appliSpring.core.dao", "tp.appliSpring.core.service", "tp.appliSpring.core.init" })
 public class DomainAndPersistenceConfig {
