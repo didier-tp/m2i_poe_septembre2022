@@ -6,6 +6,7 @@ import javax.persistence.EntityManagerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -15,6 +16,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
+@EnableJpaRepositories //demander à générer automatiquement les dao JPA (de Spring Data) en fonction des interfaces
 @EnableTransactionManagement() // "transactionManager" (not "txManager") is expected !!!
 @ComponentScan(basePackages = { "tp.appliSpring.core.dao", "tp.appliSpring.core.service", "tp.appliSpring.core.init" })
 public class DomainAndPersistenceConfig {

@@ -1,13 +1,12 @@
 package tp.appliSpring.core.dao;
 
 import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
 import tp.appliSpring.core.entity.Operation;
 
-public interface DaoOperation {
-	 Operation findById(Long numOp);
-	 Operation save(Operation Operation); //sauvegarde au sens saveOrUpdate
-	 List<Operation> findAll();
-	 void deleteById(Long numOp);
-	//...
+public interface DaoOperation extends JpaRepository<Operation,Long>{
+	
 	List<Operation> findByAccountNumber(Long numCpt);
 }
