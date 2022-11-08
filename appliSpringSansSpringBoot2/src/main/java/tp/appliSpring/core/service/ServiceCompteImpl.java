@@ -43,7 +43,8 @@ public class ServiceCompteImpl implements ServiceCompte {
 
 	@Override
 	public List<Compte> rechercherComptesDuClient(long numClient) {
-		return daoCompte.findByCustomerNumber(numClient);
+		//return daoCompte.findByCustomerNumber(numClient); //ancien nom avec @NamedQuery
+		return daoCompte.findByClientsNumero(numClient);
 	}
 
 	@Override
