@@ -12,6 +12,7 @@ import tp.appliSpring.core.entity.Client;
 import tp.appliSpring.core.entity.Compte;
 
 @Repository //ou bien @Component
+//@Transactional souvent tout en haut de la classe sur un vrai projet d'entreprise
 public class DaoCompteJpa implements DaoCompte {
 	
 	@PersistenceContext //pour initialiser entityManager à partir du fichier META-INF/persistence.xml
@@ -24,6 +25,7 @@ public class DaoCompteJpa implements DaoCompte {
 	*/
 
 	@Override
+	@Transactional
 	public Compte findById(Long numCpt) {
 		return entityManager.find(Compte.class, numCpt);
 	}

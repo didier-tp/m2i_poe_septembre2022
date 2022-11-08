@@ -4,12 +4,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import tp.appliSpring.core.dao.DaoCompte;
 import tp.appliSpring.core.entity.Compte;
 
 //@Component
+@Transactional //souvent tout en haut de la classe sur un vrai projet d'entreprise
 @Service //@Service signifie @Component de type service métier (business service)
 public class ServiceCompteImpl implements ServiceCompte {
 	
@@ -48,14 +50,15 @@ public class ServiceCompteImpl implements ServiceCompte {
 	}
 
 	@Override
-	@Transactional
+	//@Transactional(/* propagation = Propagation.REQUIRED par défaut */)
+	//maintenant @Transactional est placé dans le haut de la classe
 	public void transferer(double montant, long numCptDeb, long numCptCred) {
 		Compte cptDeb = daoCompte.findById(numCptDeb);
 		cptDeb.setSolde(cptDeb.getSolde() - montant);
-		daoCompte.save(cptDeb); //v1
+		daoCompte.save(cptDeb); //v1 ou v2 sans .save() si @Transactional
 		Compte cptCred = daoCompte.findById(numCptCred);
 		cptCred.setSolde(cptCred.getSolde() + montant);
-		daoCompte.save(cptCred); //v1
+		daoCompte.save(cptCred); // v1  ou v2 sans .save() si @Transactional
 	}
 
 	@Override
