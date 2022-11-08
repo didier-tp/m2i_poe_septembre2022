@@ -12,6 +12,6 @@ public interface DaoOperation extends JpaRepository<Operation,Long>{
 	List<Operation> findByAccountNumber(Long numCpt);
 	*/
 	
-	//codé via convention de nommage:
-	//...
+	//codé via convention de nommage (Operation comporte .compte et Compte comporte .numero )
+	List<Operation> findByCompteNumero(Long numCpt);
 }

@@ -64,8 +64,11 @@ public class TestServiceCompte {
 		// verifier -50 et +50 sur les différences de soldes sur A et B :
 		Assertions.assertEquals(soldeA_avant - 50, soldeA_apres, 0.000001);
 		Assertions.assertEquals(soldeB_avant + 50, soldeB_apres, 0.000001);
-		logger.debug("après bon virement, operations sur compteA:" + daoOperation.findByAccountNumber(numCptA));
-		logger.debug("après bon virement, operations sur compteB:" + daoOperation.findByAccountNumber(numCptB));
+		//logger.debug("après bon virement, operations sur compteA:" + daoOperation.findByAccountNumber(numCptA));
+		//logger.debug("après bon virement, operations sur compteB:" + daoOperation.findByAccountNumber(numCptB));
+		this.serviceCompte.transferer(0.05, numCptA, numCptB); //second virement pour voir plusieurs operations
+		logger.debug("après bon virement, operations sur compteA:" + daoOperation.findByCompteNumero(numCptA));
+		logger.debug("après bon virement, operations sur compteB:" + daoOperation.findByCompteNumero(numCptB));
 	}
 
 	@Test
@@ -119,8 +122,10 @@ public class TestServiceCompte {
 		serviceCompte.sauvegarderCompte(new Compte(null, "CompteW3", -6.0));
 		serviceCompte.sauvegarderCompte(new Compte(null, "CompteW2", 156.0));
 		serviceCompte.sauvegarderCompte(new Compte(null, "CompteW4", -16.0));
+		serviceCompte.sauvegarderCompte(new Compte(null, "CompteW5", 234.0));
+		serviceCompte.sauvegarderCompte(new Compte(null, "CompteW6", 22.0));
 		List<Compte> comptes = serviceCompte.rechercherComptesViaSoldeMini(0.0);
-		logger.debug("comptes avec soldes positifs =" + comptes);
+		logger.debug("comptes avec soldes positifs (par ordre croissants)=" + comptes);
 	}
 
 	@Test

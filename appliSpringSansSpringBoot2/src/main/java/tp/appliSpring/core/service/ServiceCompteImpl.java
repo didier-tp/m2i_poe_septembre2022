@@ -89,7 +89,8 @@ public class ServiceCompteImpl implements ServiceCompte {
 
 	@Override
 	public List<Compte> rechercherComptesViaSoldeMini(double soldeMini) {
-		return daoCompte.findBySoldeGreaterThanEqual(soldeMini);
+		//return daoCompte.findBySoldeGreaterThanEqual(soldeMini); //pas triés
+		return daoCompte.findBySoldeGreaterThanEqualOrderBySoldeAsc(soldeMini); //triés par soldes croissants
 	}
 
 }

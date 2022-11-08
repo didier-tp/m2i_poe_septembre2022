@@ -19,6 +19,7 @@ public interface DaoCompte extends JpaRepository<Compte,Long> {
 	List<Compte> findByClientsNumero(Long numCli);
 	
 	//codé via convention de nommage
+	List<Compte> findBySoldeGreaterThanEqualOrderBySoldeAsc(double soldeMini);
 	List<Compte> findBySoldeGreaterThanEqual(double soldeMini);
 	
 	//codé via @NamedQuery "Compte.findWithOperationsById"
