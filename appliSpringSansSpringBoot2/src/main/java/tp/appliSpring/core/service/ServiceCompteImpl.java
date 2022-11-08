@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import tp.appliSpring.core.dao.DaoCompte;
+import tp.appliSpring.core.dao.DaoOperation;
 import tp.appliSpring.core.entity.Compte;
+import tp.appliSpring.core.entity.Operation;
 import tp.appliSpring.core.exception.SoldeInsuffisantException;
 
 //@Component
@@ -19,9 +21,13 @@ public class ServiceCompteImpl implements ServiceCompte {
 	//@Qualifier("daoCompteJpa")
 	private DaoCompte daoCompte;
 	
+	//@Autowired ici ou bien implicitement sur constructeur
+	private DaoOperation daoOperation; 
+	
 	//@Autowired //@Autowired implicite si un seul constructeur
-	public ServiceCompteImpl(@Qualifier("daoCompteJpa")DaoCompte daoCompte) {
+	public ServiceCompteImpl(@Qualifier("daoCompteJpa")DaoCompte daoCompte , DaoOperation daoOperation) {
 		this.daoCompte = daoCompte;
+		this.daoOperation = daoOperation;
 	}
 
 	@Override
@@ -58,9 +64,16 @@ public class ServiceCompteImpl implements ServiceCompte {
 			if(cptDeb.getSolde() < montant)
 				throw new SoldeInsuffisantException("solde insuffisant sur compte " + numCptDeb);
 			cptDeb.setSolde(cptDeb.getSolde() - montant);
+			//créer, rattacher et enregistrer un objet Operation sur de débit
+			Operation opDebit = new Operation(null, "debit suite au virement", -montant);
+			opDebit.setCompte(cptDeb);	daoOperation.save(opDebit);
 			daoCompte.save(cptDeb); //v1 ou v2 sans .save() si @Transactional
+			
 			Compte cptCred = daoCompte.findById(numCptCred);
 			cptCred.setSolde(cptCred.getSolde() + montant);
+			//créer, rattacher et enregistrer un objet Operation sur le crédit
+			Operation opCredit = new Operation(null, "crédit suite au virement", montant);
+			opCredit.setCompte(cptCred);	daoOperation.save(opCredit);
 			daoCompte.save(cptCred); // v1  ou v2 sans .save() si @Transactional
 		} catch (Exception e) {
 			throw new RuntimeException("echec virement" , e);

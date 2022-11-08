@@ -64,6 +64,8 @@ public class TestServiceCompte {
 		// verifier -50 et +50 sur les différences de soldes sur A et B :
 		Assertions.assertEquals(soldeA_avant - 50, soldeA_apres, 0.000001);
 		Assertions.assertEquals(soldeB_avant + 50, soldeB_apres, 0.000001);
+		logger.debug("après bon virement, operations sur compteA:" + daoOperation.findByAccountNumber(numCptA));
+		logger.debug("après bon virement, operations sur compteB:" + daoOperation.findByAccountNumber(numCptB));
 	}
 
 	@Test
