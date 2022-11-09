@@ -11,14 +11,17 @@
     <h:commandButton value="rechercher comptes" action="#{compteBean.doLogin}" />
  </h:form> 
  
- <h:dataTable value="#{compteBean.comptes}" var="c">
+ <h:dataTable border="2" value="#{compteBean.comptes}" var="c">
      <h:column>
+         <f:facet name="header">numero</f:facet>
          <h:outputText value="#{c.numero}" />
      </h:column>
      <h:column>
+          <f:facet name="header">label</f:facet>
          <h:outputText value="#{c.label}" />
      </h:column>
      <h:column>
+          <f:facet name="header">solde</f:facet>
          <h:outputText value="#{c.solde}" />
      </h:column>
  </h:dataTable>
