@@ -12,6 +12,7 @@ import tp.appliSpring.core.service.ServiceCompte;
 
 @ManagedBean
 @RequestScope
+//@SessionScope
 public class CompteBean {
 	private Long numClient; //à saisir
 	private List<Compte> comptes; //à afficher

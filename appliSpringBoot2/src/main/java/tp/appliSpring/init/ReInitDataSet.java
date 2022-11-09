@@ -32,9 +32,12 @@ public class ReInitDataSet {
 		clientA = serviceClient.sauvegarderClient(clientA);
 		
 	
-		serviceCompte.sauvegarderCompte(new Compte(null,"compteC3", 250.0));
-		serviceCompte.sauvegarderCompte(new Compte(null,"compteC4", 350.0));
-		//...
+		Compte compteC3Sauvegarde = serviceCompte.sauvegarderCompte(new Compte(null,"compteC3", 250.0));
+		Compte compteC4Sauvegarde = serviceCompte.sauvegarderCompte(new Compte(null,"compteC4", 350.0));
+		Client clientB = new Client(null, "axelle", "Aire", "13 rue Elle 75001 Paris", "email2");
+		clientB.getComptes().add(compteC3Sauvegarde);
+		clientB.getComptes().add(compteC4Sauvegarde);
+		clientB = serviceClient.sauvegarderClient(clientB);
 	}
 
 }
