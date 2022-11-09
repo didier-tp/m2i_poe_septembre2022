@@ -8,6 +8,11 @@
 <title>comptes</title>
 </head>
 <body>
+     <h3>client</h3>
+     <ul>
+         <li> premom = ${client.prenom} </li>
+         <li> nom= ${client.nom} </li>
+     </ul>
 	<h3>comptes du client</h3>
 	<table border="1">
 		<tr>
@@ -23,5 +28,8 @@
 			</tr>
 		</c:forEach>
 	</table>
+	<br/>
+	<a href="index.html">retour index</a>
+	
 </body>
 </html>
