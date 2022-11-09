@@ -2,14 +2,21 @@ package tp.appliSpring.web.jsf;
 
 import java.util.List;
 
+import javax.annotation.ManagedBean;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.context.annotation.RequestScope;
+
 import tp.appliSpring.core.entity.Compte;
 import tp.appliSpring.core.service.ServiceCompte;
 
+@ManagedBean
+@RequestScope
 public class CompteBean {
 	private Long numClient; //à saisir
 	private List<Compte> comptes; //à afficher
 	
-	//@Autowired ou @Inject ou ...
+	@Autowired
 	private ServiceCompte serviceCompte;//à injecter
 	
 	public String doLogin() {
