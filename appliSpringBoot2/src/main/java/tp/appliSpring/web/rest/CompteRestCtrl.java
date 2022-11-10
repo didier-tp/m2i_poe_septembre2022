@@ -2,6 +2,7 @@ package tp.appliSpring.web.rest;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -43,6 +44,8 @@ public class CompteRestCtrl {
 		}
 		else if(numClient != null) {
 			compteDtoList = DtoConverter.compteListToCompteDtoList(serviceCompte.rechercherComptesDuClient(numClient));
+			if(soldeMini !=null)
+				compteDtoList=compteDtoList.stream().filter((c)->c.getSolde()>=soldeMini).collect(Collectors.toList());
 		}
 		else if(soldeMini != null) {
 			compteDtoList = DtoConverter.compteListToCompteDtoList(serviceCompte.rechercherComptesViaSoldeMini(soldeMini));
