@@ -8,7 +8,7 @@
 </head>
 <body>
    <form action="verifLogin" method="GET">
-        <input name="numClient" /> <br/>
+        numClient:<input name="numClient" /> <br/>
         <input type="submit" value="login"/>
    </form>
 </body>
