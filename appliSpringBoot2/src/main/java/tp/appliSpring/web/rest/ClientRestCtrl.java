@@ -1,5 +1,7 @@
 package tp.appliSpring.web.rest;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +22,13 @@ public class ClientRestCtrl {
 	@GetMapping("/{numClient}")
 	public Client getClientByNum(@PathVariable("numClient") Long numClient) {
 		return serviceClient.rechercherClientParNumero(numClient);
+	}
+	
+	//URL= http://localhost:8080/appliSpringBoot/bank-api/client
+	//ou   http://localhost:8080/appliSpringBoot/bank-api/client?nom=Therieur
+	@GetMapping("")
+	public List<Client> getClientsByCriteria(){
+		return serviceClient.rechercherTousClients();
 	}
 
 }
