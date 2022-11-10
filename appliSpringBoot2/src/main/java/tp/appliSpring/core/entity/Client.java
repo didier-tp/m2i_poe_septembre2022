@@ -14,6 +14,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -35,6 +37,8 @@ public class Client {
 	    joinColumns = { @JoinColumn(name="numClient")} ,
 	    inverseJoinColumns = { @JoinColumn(name="numCompte")}
 	)
+	@JsonIgnore //pour ignorer .comptes lorsque le client java sera transformé en client json
+	            //MAIS c'est beaucoup moins bien que les DTO
 	private List<Compte> comptes=new ArrayList<>();
 	
 	@Id
