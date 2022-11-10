@@ -13,6 +13,10 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 @Entity
 @Table(name="compte")
 @NamedQuery(name="Compte.findAll",query="SELECT c FROM Compte c")
@@ -20,6 +24,7 @@ import javax.persistence.Table;
             query="SELECT c FROM Compte c JOIN c.clients cli WHERE cli.numero = ?1")
 @NamedQuery(name="Compte.findWithOperationsById",
              query="SELECT c FROM Compte c LEFT JOIN FETCH c.operations WHERE c.numero = ?1")
+@Getter @Setter @NoArgsConstructor
 public class Compte {
 	
 	 @ManyToMany(mappedBy = "comptes")//coté secondaire avec mappedBy="nomJavaRelationInverse"
@@ -39,9 +44,7 @@ public class Compte {
 	 @OneToMany(mappedBy="compte")
 	 private List<Operation> operations;
 	 
-	public Compte() {
-		super();
-	}
+	
 	
 	public Compte(Long numero, String label, Double solde) {
 		super();
@@ -56,40 +59,7 @@ public class Compte {
 		return "Compte [numero=" + numero + ", label=" + label + ", solde=" + solde + "]";
 	}
 
-	public Long getNumero() {
-		return numero;
-	}
-	public void setNumero(Long numero) {
-		this.numero = numero;
-	}
-	public String getLabel() {
-		return label;
-	}
-	public void setLabel(String label) {
-		this.label = label;
-	}
-	public Double getSolde() {
-		return solde;
-	}
-	public void setSolde(Double solde) {
-		this.solde = solde;
-	}
-
-	public List<Client> getClients() {
-		return clients;
-	}
-
-	public void setClients(List<Client> clients) {
-		this.clients = clients;
-	}
-
-	public List<Operation> getOperations() {
-		return operations;
-	}
-
-	public void setOperations(List<Operation> operations) {
-		this.operations = operations;
-	}
+	
 	 
 	 
 

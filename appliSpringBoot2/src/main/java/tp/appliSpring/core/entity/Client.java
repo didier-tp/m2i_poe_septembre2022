@@ -14,11 +14,17 @@ import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 @Entity
 @Table(name="client")
 @NamedQuery(name="Client.findAll",query="SELECT c FROM Client c")
 @NamedQuery(name="Client.findWithAccountById",
             query="SELECT c FROM Client c LEFT JOIN FETCH c.comptes WHERE c.numero = ?1")
+@Getter @Setter
+@NoArgsConstructor
 public class Client {
 	
 	//un client aura souvent plusieurs comptes
@@ -57,52 +63,5 @@ public class Client {
 				+ email + "]";
 	}
 
-
-
-	public Client() {
-		super();
-	}
-
-	public Long getNumero() {
-		return numero;
-	}
-	
-	public void setNumero(Long numero) {
-		this.numero = numero;
-	}
-	public String getPrenom() {
-		return prenom;
-	}
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
-	}
-	public String getNom() {
-		return nom;
-	}
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
-	public String getAdresse() {
-		return adresse;
-	}
-	public void setAdresse(String adresse) {
-		this.adresse = adresse;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public List<Compte> getComptes() {
-		return comptes;
-	}
-
-	public void setComptes(List<Compte> comptes) {
-		this.comptes = comptes;
-	}
-	
-	
 
 }

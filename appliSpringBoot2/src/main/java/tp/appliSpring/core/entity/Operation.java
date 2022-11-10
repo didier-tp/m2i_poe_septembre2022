@@ -13,6 +13,9 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /* 
  * DaoOperation, DaoOperationJpa 
  * ServiceOperation facultatif
@@ -27,6 +30,7 @@ import javax.persistence.TemporalType;
 @NamedQuery(name="Operation.findAll",query="SELECT o FROM Operation o")
 @NamedQuery(name="Operation.findByAccountNumber",
             query="SELECT o FROM Operation o WHERE o.compte.numero = ?1")
+@Getter @Setter
 public class Operation {
 	
 	@Id 
@@ -68,54 +72,7 @@ public class Operation {
 	}
 
 
-	public Long getNumOp() {
-		return numOp;
-	}
-
-
-	public void setNumOp(Long numOp) {
-		this.numOp = numOp;
-	}
-
-
-	public String getLabel() {
-		return label;
-	}
-
-
-	public void setLabel(String label) {
-		this.label = label;
-	}
-
-
-	public Double getMontant() {
-		return montant;
-	}
-
-
-	public void setMontant(Double montant) {
-		this.montant = montant;
-	}
-
-
-	public Date getDateOp() {
-		return dateOp;
-	}
-
-
-	public void setDateOp(Date dateOp) {
-		this.dateOp = dateOp;
-	}
-
-
-	public Compte getCompte() {
-		return compte;
-	}
-
-
-	public void setCompte(Compte compte) {
-		this.compte = compte;
-	}
+	
 	
 	
 }
