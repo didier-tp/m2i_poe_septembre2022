@@ -37,5 +37,11 @@ public class DtoConverter {
 			   .map((client)->clientToCustomer(client))
 			   .collect(Collectors.toList());
 	}
+	
+	public static List<CompteDto> compteListToCompteDtoList(List<Compte> comptes){
+		return comptes.stream()
+			   .map((compte)->compteToCompteDto(compte))
+			   .collect(Collectors.toList());
+	}
 
 }
