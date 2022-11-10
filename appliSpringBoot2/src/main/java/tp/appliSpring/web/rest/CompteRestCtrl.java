@@ -34,8 +34,9 @@ public class CompteRestCtrl {
 	//URL= http://localhost:8080/appliSpringBoot/bank-api/compte
 	//ou   http://localhost:8080/appliSpringBoot/bank-api/compte?numClient=1
 	//ou   http://localhost:8080/appliSpringBoot/bank-api/compte?soldeMini=50
+	//ou   http://localhost:8080/appliSpringBoot/bank-api/compte?numClient=1&soldeMini=50
 	@GetMapping("")
-	public List<CompteDto> getCustomersByCriteria(
+	public List<CompteDto> getComptesByCriteria(
 			@RequestParam(name="numClient" , required=false) Long numClient,
 			@RequestParam(name="soldeMini" , required=false) Double soldeMini){
 		List<CompteDto> compteDtoList = new ArrayList<>();

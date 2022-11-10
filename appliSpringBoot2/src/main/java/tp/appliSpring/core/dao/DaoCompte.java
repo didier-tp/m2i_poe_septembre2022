@@ -7,10 +7,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import tp.appliSpring.core.entity.Compte;
 
 public interface DaoCompte extends JpaRepository<Compte,Long> {
-	/*
+
 	//codé via @NamedQuery "Compte.findByCustomerNumber"
 	List<Compte> findByCustomerNumber(Long numCli);
-	*/
+	
 	
 	//NB: le code de la requête déclenchée sera généré automatiquement
 	//par spring-Data via des conventions de nom de méthode (même pas besoin de @NamedQuery)
