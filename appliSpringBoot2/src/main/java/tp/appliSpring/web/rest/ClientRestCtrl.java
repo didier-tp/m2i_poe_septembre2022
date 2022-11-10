@@ -1,11 +1,13 @@
 package tp.appliSpring.web.rest;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import tp.appliSpring.core.entity.Client;
@@ -27,8 +29,16 @@ public class ClientRestCtrl {
 	//URL= http://localhost:8080/appliSpringBoot/bank-api/client
 	//ou   http://localhost:8080/appliSpringBoot/bank-api/client?nom=Therieur
 	@GetMapping("")
-	public List<Client> getClientsByCriteria(){
-		return serviceClient.rechercherTousClients();
+	public List<Client> getClientsByCriteria(
+			@RequestParam(name="nom" , required=false)String nomClient){
+		if(nomClient==null)
+		   return serviceClient.rechercherTousClients();
+		else {
+		   //return serviceClient.rechercherClientsParNom(nomClient);
+		   return serviceClient.rechercherTousClients().stream()
+				  .filter((client)->client.getNom().equals(nomClient))
+				  .collect(Collectors.toList());
+		}
 	}
 
 }

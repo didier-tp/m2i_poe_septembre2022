@@ -31,6 +31,9 @@ public class ReInitDataSet {
 		clientA.getComptes().add(compteC2Sauvegarde);
 		clientA = serviceClient.sauvegarderClient(clientA);
 		
+		Client clientABis = new Client(null, "alain", "Therieur", "12 rue Elle 75001 Paris", "email1bis");
+		clientABis = serviceClient.sauvegarderClient(clientABis);
+		
 	
 		Compte compteC3Sauvegarde = serviceCompte.sauvegarderCompte(new Compte(null,"compteC3", 250.0));
 		Compte compteC4Sauvegarde = serviceCompte.sauvegarderCompte(new Compte(null,"compteC4", 350.0));
