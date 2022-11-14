@@ -32,7 +32,7 @@ public class CompteRestCtrlV2 {
 	//ou   http://localhost:8080/appliSpringBoot/bank-api/comptev2?numClient=1
 	//ou   http://localhost:8080/appliSpringBoot/bank-api/comptev2?soldeMini=50
 	@GetMapping("")
-	public List<CompteDto> getCustomersByCriteria(
+	public List<CompteDto> getComptesByCriteria(
 			@RequestParam(name="numClient" , required=false) Long numClient,
 			@RequestParam(name="soldeMini" , required=false) Double soldeMini){
 		List<CompteDto> compteDtoList = new ArrayList<>();

@@ -32,7 +32,7 @@ public class ServiceCompteWithDtoImpl implements ServiceCompteWithDto {
 	}
 
 	@Override
-	public Compte sauvegarderCompte(CompteDto compte) {
+	public CompteDto sauvegarderCompte(CompteDto compte) {
 		return null;
 	}
 

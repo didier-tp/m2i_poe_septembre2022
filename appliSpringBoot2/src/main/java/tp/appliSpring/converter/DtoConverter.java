@@ -7,8 +7,11 @@ import org.springframework.beans.BeanUtils;
 
 import tp.appliSpring.core.entity.Client;
 import tp.appliSpring.core.entity.Compte;
+import tp.appliSpring.core.entity.Operation;
 import tp.appliSpring.dto.CompteDto;
+import tp.appliSpring.dto.CompteDtoEx;
 import tp.appliSpring.dto.Customer;
+import tp.appliSpring.dto.OperationDto;
 
 public class DtoConverter {
 	
@@ -42,6 +45,18 @@ public class DtoConverter {
 		return comptes.stream()
 			   .map((compte)->compteToCompteDto(compte))
 			   .collect(Collectors.toList());
+	}
+
+	public static CompteDtoEx compteToCompteDtoEx(Compte compteEntity) {
+		CompteDtoEx compteDtoEx = new CompteDtoEx();
+		BeanUtils.copyProperties(compteEntity, compteDtoEx);//recopie de compteEntity
+		                                                    //vers compteDtoEx
+		                                                    //toutes les parties de mêmes noms (.numero , .label , .solde)
+		for(Operation op : compteEntity.getOperations()) {
+			OperationDto opDto = new OperationDto(op.getLabel(),op.getMontant(),op.getDateOp().toString());
+			compteDtoEx.getOperations().add(opDto);
+		}
+		return compteDtoEx;
 	}
 
 }

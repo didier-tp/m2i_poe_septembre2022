@@ -9,7 +9,7 @@ public interface ServiceCompteWithDto {
 	CompteDto rechercherCompteParNumero(long numero);
 	List<CompteDto> rechercherTousComptes();
 	List<CompteDto> rechercherComptesDuClient(long numClient);
-	Compte sauvegarderCompte(CompteDto compte);
+	CompteDto sauvegarderCompte(CompteDto compte);
 	void supprimerCompte(long numCpt);
 	void transferer(double montant, long numCptDeb, long numCptCred);
 	//Compte rechercherCompteAvecOperationsParNumero(Long numCompteXy);

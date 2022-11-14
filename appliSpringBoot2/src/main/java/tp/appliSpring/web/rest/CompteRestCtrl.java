@@ -15,6 +15,7 @@ import tp.appliSpring.converter.DtoConverter;
 import tp.appliSpring.core.entity.Compte;
 import tp.appliSpring.core.service.ServiceCompte;
 import tp.appliSpring.dto.CompteDto;
+import tp.appliSpring.dto.CompteDtoEx;
 
 @RestController //composant spring de type contrôleur pour Web Service REST
 @RequestMapping(value="/bank-api/compte" , headers="Accept=application/json")
@@ -29,6 +30,14 @@ public class CompteRestCtrl {
 		Compte compteEntity = serviceCompte.rechercherCompteParNumero(numCompte);
 		CompteDto compteDto = DtoConverter.compteToCompteDto(compteEntity);
 		return compteDto;
+	}
+	
+	//URL= http://localhost:8080/appliSpringBoot/bank-api/compte/with_details/1
+	@GetMapping("/withDetails/{numCompte}")
+	public CompteDtoEx getCompteByNumWithDetails(@PathVariable("numCompte") Long numCompte) {
+			Compte compteEntity = serviceCompte.rechercherCompteAvecOperationsParNumero(numCompte);
+			CompteDtoEx compteDtoEx = DtoConverter.compteToCompteDtoEx(compteEntity);
+			return compteDtoEx;
 	}
 	
 	//URL= http://localhost:8080/appliSpringBoot/bank-api/compte
