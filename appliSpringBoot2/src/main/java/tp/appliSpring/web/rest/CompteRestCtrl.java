@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,14 +27,25 @@ public class CompteRestCtrl {
 	private ServiceCompte serviceCompte;
 	
 	//URL= http://localhost:8080/appliSpringBoot/bank-api/compte/1
-	@GetMapping("/{numCompte}")
+	/*@GetMapping("/{numCompte}")
 	public CompteDto getCompteByNum(@PathVariable("numCompte") Long numCompte) {
 		Compte compteEntity = serviceCompte.rechercherCompteParNumero(numCompte);
 		CompteDto compteDto = DtoConverter.compteToCompteDto(compteEntity);
 		return compteDto;
+	}*/
+	@GetMapping("/{numCompte}")
+	public ResponseEntity<CompteDto> getCompteByNum(@PathVariable("numCompte") Long numCompte) {
+		Compte compteEntity = serviceCompte.rechercherCompteParNumero(numCompte);
+		if(compteEntity!=null) {
+			CompteDto compteDto = DtoConverter.compteToCompteDto(compteEntity);
+			return new ResponseEntity<CompteDto> (compteDto, HttpStatus.OK);
+		}
+		else {
+			return new ResponseEntity<CompteDto> (HttpStatus.NOT_FOUND);
+		}
 	}
 	
-	//URL= http://localhost:8080/appliSpringBoot/bank-api/compte/with_details/1
+	//URL= http://localhost:8080/appliSpringBoot/bank-api/compte/withDetails/1
 	@GetMapping("/withDetails/{numCompte}")
 	public CompteDtoEx getCompteByNumWithDetails(@PathVariable("numCompte") Long numCompte) {
 			Compte compteEntity = serviceCompte.rechercherCompteAvecOperationsParNumero(numCompte);
