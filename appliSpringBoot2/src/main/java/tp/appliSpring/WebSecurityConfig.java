@@ -17,7 +17,7 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
 	    return this.passwordEncoder;
 	 }
 	 
-	 private BCryptPasswordEncoder passwordEncoder  = new BCryptPasswordEncoder();;
+	 private BCryptPasswordEncoder passwordEncoder  = new BCryptPasswordEncoder();
 	 
 	 @Autowired
 	 public void globalUserDetails(final AuthenticationManagerBuilder auth) throws Exception {
@@ -26,6 +26,13 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
 	 .withUser("admin1").password(passwordEncoder.encode("pwd1")).roles("ADMIN").and()
 	 .withUser("user2").password(passwordEncoder.encode("pwd2")).roles("USER").and()
 	 .withUser("admin2").password(passwordEncoder.encode("pwd2")).roles("ADMIN");
+	 /*
+	 String pwdCrypte = passwordEncoder.encode("pwd1"); System.out.println("pwdCrypte="+pwdCrypte);
+	 String pwdCrypte2 = passwordEncoder.encode("pwd1");System.out.println("pwdCrypte="+pwdCrypte2);
+	 String pwdAVerifier="pwd1" ; //ou bien "wrongPwd";
+	 boolean motDePasseOk = passwordEncoder.matches(pwdAVerifier,pwdCrypte);
+	 System.out.println("motDePasseOk = "+motDePasseOk);
+	 */
 	 }
 	 
 	 @Override
