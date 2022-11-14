@@ -17,6 +17,7 @@ import tp.appliSpring.core.dao.DaoOperation;
 import tp.appliSpring.core.entity.Client;
 import tp.appliSpring.core.entity.Compte;
 import tp.appliSpring.core.entity.Operation;
+import tp.appliSpring.core.exception.NotFoundException;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes={AppliSpringBootApplication.class}) // java config
@@ -201,9 +202,21 @@ public class TestServiceCompte {
 		logger.debug("compteRelu apres miseAjour=" + compteRelu);
 		// +supprimer :
 		this.serviceCompte.supprimerCompte(compteSauvegarde.getNumero());
+		/* ANCIENNE VERSION Ou rechercherCompteParNumero retournait null
 		// verifier bien supprimé (en tentant une relecture qui renvoi null)
 		Compte compteReluApresSuppression = this.serviceCompte.rechercherCompteParNumero(compteSauvegarde.getNumero());
 		Assertions.assertTrue(compteReluApresSuppression == null);
+		*/
+		// verifier bien supprimé (en tentant une relecture qui renvoi NotFoundException)
+		Compte compteReluApresSuppression;
+		try {
+			compteReluApresSuppression = this.serviceCompte.rechercherCompteParNumero(compteSauvegarde.getNumero());
+		    Assertions.fail("une exception aurait dû remonter si compte supprimé");
+		} catch (NotFoundException e) {
+			Assertions.assertTrue(e.getClass().getSimpleName().equals("NotFoundException"));
+			//e.printStackTrace();
+		}
+		
 	}
 
 }
