@@ -1,8 +1,8 @@
 package tp.appliSpring.core.service;
 
 import java.util.List;
+import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -10,6 +10,7 @@ import tp.appliSpring.core.dao.DaoCompte;
 import tp.appliSpring.core.dao.DaoOperation;
 import tp.appliSpring.core.entity.Compte;
 import tp.appliSpring.core.entity.Operation;
+import tp.appliSpring.core.exception.NotFoundException;
 import tp.appliSpring.core.exception.SoldeInsuffisantException;
 
 //@Component
@@ -32,8 +33,13 @@ public class ServiceCompteImpl implements ServiceCompte {
 	}
 
 	@Override
-	public Compte rechercherCompteParNumero(long numero) {
-		return daoCompte.findById(numero).orElse(null);
+	public Compte rechercherCompteParNumero(long numero) throws NotFoundException{
+		//return daoCompte.findById(numero).orElse(null);
+		Optional<Compte> optCompte = daoCompte.findById(numero);
+		if(optCompte.isEmpty())
+			throw new NotFoundException("compte not found avec numero="+numero);
+		/*else*/
+		return optCompte.get();
 	}
 
 	@Override
