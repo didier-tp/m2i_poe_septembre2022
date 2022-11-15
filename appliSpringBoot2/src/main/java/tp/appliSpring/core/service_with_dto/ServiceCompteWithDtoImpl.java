@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import tp.appliSpring.converter.DtoConverter;
+import tp.appliSpring.converter.MyGenericConverter;
 import tp.appliSpring.core.entity.Compte;
 import tp.appliSpring.core.service.ServiceCompte;
 import tp.appliSpring.dto.CompteDto;
@@ -18,22 +19,28 @@ public class ServiceCompteWithDtoImpl implements ServiceCompteWithDto {
 
 	@Override
 	public CompteDto rechercherCompteParNumero(long numero) {
-		return DtoConverter.compteToCompteDto(serviceCompte.rechercherCompteParNumero(numero));
+		return MyGenericConverter.map(serviceCompte.rechercherCompteParNumero(numero), CompteDto.class);
+		//return DtoConverter.compteToCompteDto(serviceCompte.rechercherCompteParNumero(numero));
 	}
 
 	@Override
 	public List<CompteDto> rechercherTousComptes() {
-		return DtoConverter.compteListToCompteDtoList(serviceCompte.rechercherTousComptes());
+		return MyGenericConverter.map(serviceCompte.rechercherTousComptes(), CompteDto.class);
+		//return DtoConverter.compteListToCompteDtoList(serviceCompte.rechercherTousComptes());
 	}
 
 	@Override
 	public List<CompteDto> rechercherComptesDuClient(long numClient) {
-		return DtoConverter.compteListToCompteDtoList(serviceCompte.rechercherComptesDuClient(numClient));
+		return MyGenericConverter.map(serviceCompte.rechercherComptesDuClient(numClient), CompteDto.class);
+		//return DtoConverter.compteListToCompteDtoList(serviceCompte.rechercherComptesDuClient(numClient));
 	}
 
 	@Override
-	public CompteDto sauvegarderCompte(CompteDto compte) {
-		return null;
+	public CompteDto sauvegarderCompte(CompteDto compteDto) {
+		Compte compteEntity = MyGenericConverter.map(compteDto,Compte.class);
+		serviceCompte.sauvegarderCompte(compteEntity);
+		compteDto.setNumero(compteEntity.getNumero());
+		return compteDto;
 	}
 
 	@Override
@@ -48,7 +55,8 @@ public class ServiceCompteWithDtoImpl implements ServiceCompteWithDto {
 
 	@Override
 	public List<CompteDto> rechercherComptesViaSoldeMini(double soldeMini) {
-		return DtoConverter.compteListToCompteDtoList(serviceCompte.rechercherComptesViaSoldeMini(soldeMini));
+		return MyGenericConverter.map(serviceCompte.rechercherComptesViaSoldeMini(soldeMini), CompteDto.class);
+		//return DtoConverter.compteListToCompteDtoList(serviceCompte.rechercherComptesViaSoldeMini(soldeMini));
 	}
 
 }
