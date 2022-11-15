@@ -30,6 +30,8 @@ public class ServiceCompteImpl implements ServiceCompte {
 	public ServiceCompteImpl(DaoCompte daoCompte , DaoOperation daoOperation) {
 		this.daoCompte = daoCompte;
 		this.daoOperation = daoOperation;
+		System.out.println("dans le constructeur ServiceCompteImpl effectuant l'injection de dépendance ");
+		System.out.println("daoCompte="+daoCompte  + " " + daoCompte.getClass().getName()+" et daoOperation=" + daoOperation);
 	}
 
 	@Override
