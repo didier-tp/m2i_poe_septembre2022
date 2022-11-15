@@ -11,6 +11,7 @@ public interface ServiceCompte {
 	List<Compte> rechercherComptesDuClient(long numClient);
 	Compte sauvegarderCompte(Compte compte);
 	void supprimerCompte(long numCpt);
+	boolean verifierPasDecouvert(long numCpt) throws NotFoundException;
 	void transferer(double montant, long numCptDeb, long numCptCred);
 	Compte rechercherCompteAvecOperationsParNumero(Long numCompteXy);
 	List<Compte> rechercherComptesViaSoldeMini(double soldeMini);

@@ -99,4 +99,12 @@ public class ServiceCompteImpl implements ServiceCompte {
 		return daoCompte.findBySoldeGreaterThanEqualOrderBySoldeAsc(soldeMini); //triés par soldes croissants
 	}
 
+	@Override
+	public boolean verifierPasDecouvert(long numCpt) throws NotFoundException {
+		Compte compte = daoCompte.findById(numCpt).orElse(null);
+		if(compte==null)
+			throw new NotFoundException("compte inexistant avec numero="+numCpt);
+		return (compte.getSolde() >= 0 );
+	}
+
 }
