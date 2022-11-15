@@ -12,7 +12,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import tp.appliSpring.AppliSpringBootApplication;
 import tp.appliSpring.core.dao.DaoOperation;
 import tp.appliSpring.core.entity.Client;
 import tp.appliSpring.core.entity.Compte;
@@ -20,7 +19,9 @@ import tp.appliSpring.core.entity.Operation;
 import tp.appliSpring.core.exception.NotFoundException;
 
 @ExtendWith(SpringExtension.class)
-@SpringBootTest(classes={AppliSpringBootApplication.class}) // java config
+//@SpringBootTest(classes={AppliSpringBootApplication.class}) // java config
+@SpringBootTest(classes={ConfigSuffisante.class})
+//@ContextConfiguration(classes={ConfigSuffisante.class})
 @ActiveProfiles({"dev"})//pour tenir compte de application-dev.properties
 public class TestServiceCompte {
 
