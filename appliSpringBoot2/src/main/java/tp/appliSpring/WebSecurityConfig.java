@@ -1,5 +1,5 @@
 package tp.appliSpring;
-
+/*
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,10 +8,10 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
-@Configuration
-public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
-
+*/
+//@Configuration
+public class WebSecurityConfig /* extends WebSecurityConfigurerAdapter */{
+/*
 	 @Bean
 	 public BCryptPasswordEncoder passwordEncoder() {
 	    return this.passwordEncoder;
@@ -26,13 +26,13 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
 	 .withUser("admin1").password(passwordEncoder.encode("pwd1")).roles("ADMIN").and()
 	 .withUser("user2").password(passwordEncoder.encode("pwd2")).roles("USER").and()
 	 .withUser("admin2").password(passwordEncoder.encode("pwd2")).roles("ADMIN");
-	 /*
-	 String pwdCrypte = passwordEncoder.encode("pwd1"); System.out.println("pwdCrypte="+pwdCrypte);
-	 String pwdCrypte2 = passwordEncoder.encode("pwd1");System.out.println("pwdCrypte="+pwdCrypte2);
-	 String pwdAVerifier="pwd1" ; //ou bien "wrongPwd";
-	 boolean motDePasseOk = passwordEncoder.matches(pwdAVerifier,pwdCrypte);
-	 System.out.println("motDePasseOk = "+motDePasseOk);
-	 */
+	
+	 //String pwdCrypte = passwordEncoder.encode("pwd1"); System.out.println("pwdCrypte="+pwdCrypte);
+	 //String pwdCrypte2 = passwordEncoder.encode("pwd1");System.out.println("pwdCrypte="+pwdCrypte2);
+	 //String pwdAVerifier="pwd1" ; //ou bien "wrongPwd";
+	 //boolean motDePasseOk = passwordEncoder.matches(pwdAVerifier,pwdCrypte);
+	 //System.out.println("motDePasseOk = "+motDePasseOk);
+	 
 	 }
 	 
 	 @Override
@@ -52,5 +52,5 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
 	 .and().csrf().disable();
 	 //.and().httpBasic()
 	 }
-
+*/
 }
