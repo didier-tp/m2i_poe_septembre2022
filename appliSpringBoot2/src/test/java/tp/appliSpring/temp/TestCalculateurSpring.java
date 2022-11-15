@@ -16,9 +16,10 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import tp.appliSpring.AppliSpringBootApplication;
 
 @ExtendWith(SpringExtension.class)
-@SpringBootTest(classes={AppliSpringBootApplication.class}) // java config
-@ActiveProfiles({"dev"})//pour tenir compte de application-dev.properties
-//@DirtiesContext(classMode = ClassMode.BEFORE_EACH_TEST_METHOD)
+//@SpringBootTest(classes={AppliSpringBootApplication.class}) // java config
+@SpringBootTest(classes={ConfigLegere.class})
+//@ActiveProfiles({"dev"})//pour tenir compte de application-dev.properties
+@DirtiesContext(classMode = ClassMode.BEFORE_EACH_TEST_METHOD)
 public class TestCalculateurSpring {
 	
 	private static Logger logger = LoggerFactory.getLogger(TestCalculateurSpring.class);
@@ -28,7 +29,7 @@ public class TestCalculateurSpring {
 
 	
 	@Test
-	@DirtiesContext(methodMode = MethodMode.BEFORE_METHOD)
+	//@DirtiesContext(methodMode = MethodMode.BEFORE_METHOD)
 	public void testSomme() {
 		logger.debug("testSomme() appelée , this="+this + " calculateur="+calculateur);
 		calculateur.addVal(8);
@@ -38,7 +39,7 @@ public class TestCalculateurSpring {
 	}
 	
 	@Test
-	@DirtiesContext(methodMode = MethodMode.BEFORE_METHOD)
+	//@DirtiesContext(methodMode = MethodMode.BEFORE_METHOD)
 	public void testMoyenne() {
 		logger.debug("testMoyenne() appelée , this="+this + " calculateur="+calculateur);
 		calculateur.addVal(8);
