@@ -120,6 +120,20 @@ public class TestServiceCompte {
 	}
 	
 	@Test
+	public void testVerifierPasDecouvert() {
+		Compte compteSauvegarde = serviceCompte.sauvegarderCompte(new Compte(null, "ComptePositif", 256.0));
+		boolean bPasDecouvert = serviceCompte.verifierPasDecouvert(compteSauvegarde.getNumero());
+		logger.debug("bPasDecouvert=" + bPasDecouvert);
+		Assertions.assertTrue(bPasDecouvert);
+		
+		Compte compteSauvegarde2 = serviceCompte.sauvegarderCompte(new Compte(null, "CompteNegatif", -256.0));
+		boolean bPasDecouvert2 = serviceCompte.verifierPasDecouvert(compteSauvegarde2.getNumero());
+		logger.debug("bPasDecouvert2=" + bPasDecouvert2);
+		Assertions.assertFalse(bPasDecouvert2);
+	}
+	
+	
+	@Test
 	public void testRechercherComptesAvecSoldeMini() {
 		serviceCompte.sauvegarderCompte(new Compte(null, "CompteW1", 256.0));
 		serviceCompte.sauvegarderCompte(new Compte(null, "CompteW3", -6.0));
