@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 
 import tp.appliSpring.core.dao.DaoCompte;
 import tp.appliSpring.core.entity.Compte;
+import tp.appliSpring.core.exception.NotFoundException;
 
 @ExtendWith(MockitoExtension.class) //for JUnit 5
 public class TestServiceCompteMockito {
@@ -31,6 +32,7 @@ public class TestServiceCompteMockito {
 	
 	private static Logger logger = LoggerFactory.getLogger(TestServiceCompteMockito.class);
 
+	//+ éventuel appel à MockitoAnnotations.openMocks(this); dans @BeforeEach
 	
 	@Test
 	public void testVerifierPasDecouvert() {
@@ -40,8 +42,26 @@ public class TestServiceCompteMockito {
 		boolean bPasDecouvert = serviceCompte.verifierPasDecouvert(numCompte1);
 		logger.debug("bPasDecouvert=" + bPasDecouvert);
 		Assertions.assertTrue(bPasDecouvert);
-		
-		Long numCompte2 = 656L;
+	}
+	
+	@Test
+	public void testVerifierPasDecouvertAvecCompteInconnu() {
+		Long numCompteInconnu = 999L;
+		Mockito.when(daoCompteMock.findById(numCompteInconnu))
+		       .thenReturn(Optional.empty());
+		try {
+			serviceCompte.verifierPasDecouvert(numCompteInconnu);
+			Assertions.fail("une exception aurait du remonter");
+		} catch (Exception ex) {
+			logger.debug("exception normalement attendue="+ex.getMessage());
+			Assertions.assertTrue(ex.getClass().getSimpleName()
+			 .equals("NotFoundException"));
+		}
+	}
+	
+	@Test
+	public void testVerifierDecouvert() {
+		Long numCompte2 = 652L;
 		Mockito.when(daoCompteMock.findById(numCompte2))
 		       .thenReturn(Optional.of(new Compte(numCompte2, "CompteNegatif", -256.0)));
 		boolean bPasDecouvert2 = serviceCompte.verifierPasDecouvert(numCompte2);
