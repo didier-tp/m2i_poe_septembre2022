@@ -1,5 +1,7 @@
 package tp.appliSpring.core.service;
 
+import static org.mockito.ArgumentMatchers.anyLong;
+
 import java.util.Optional;
 
 import org.junit.jupiter.api.Assertions;
@@ -14,7 +16,6 @@ import org.slf4j.LoggerFactory;
 
 import tp.appliSpring.core.dao.DaoCompte;
 import tp.appliSpring.core.entity.Compte;
-import tp.appliSpring.core.exception.NotFoundException;
 
 @ExtendWith(MockitoExtension.class) //for JUnit 5
 public class TestServiceCompteMockito {
@@ -37,11 +38,15 @@ public class TestServiceCompteMockito {
 	@Test
 	public void testVerifierPasDecouvert() {
 		Long numCompte1 = 678L;
+		//1.préparation du mock en arrière plan:
 		Mockito.when(daoCompteMock.findById(numCompte1))
 		       .thenReturn(Optional.of(new Compte(numCompte1, "ComptePositif", 256.0)));
+		//2.appel de la méthode verifierPasDecouvert sur le service et test retour
 		boolean bPasDecouvert = serviceCompte.verifierPasDecouvert(numCompte1);
 		logger.debug("bPasDecouvert=" + bPasDecouvert);
 		Assertions.assertTrue(bPasDecouvert);
+		//3 (étape facultative) :verif service appelant 1 fois compteDao.findById() via aspect "spy" de Mockito:
+		Mockito.verify(daoCompteMock, Mockito.times(1)).findById(anyLong());
 	}
 	
 	@Test
@@ -57,6 +62,7 @@ public class TestServiceCompteMockito {
 			Assertions.assertTrue(ex.getClass().getSimpleName()
 			 .equals("NotFoundException"));
 		}
+		Mockito.verify(daoCompteMock, Mockito.times(1)).findById(anyLong());
 	}
 	
 	@Test
@@ -67,5 +73,6 @@ public class TestServiceCompteMockito {
 		boolean bPasDecouvert2 = serviceCompte.verifierPasDecouvert(numCompte2);
 		logger.debug("bPasDecouvert2=" + bPasDecouvert2);
 		Assertions.assertFalse(bPasDecouvert2);
+		Mockito.verify(daoCompteMock, Mockito.times(1)).findById(anyLong());
 	}
 }
