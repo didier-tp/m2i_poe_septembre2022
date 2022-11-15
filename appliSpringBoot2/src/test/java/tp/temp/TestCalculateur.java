@@ -28,6 +28,17 @@ public class TestCalculateur {
 	}
 	
 	@Test
+	public void testMoyenne() {
+		System.out.println("testMoyenne() appelée , this="+this);
+		calculateur.addVal(8);
+		calculateur.addVal(6);
+		double m  = calculateur.getMoyenne();
+		Assertions.assertEquals(7, m , 0.0000001);
+	}
+	
+	
+	
+	@Test
 	public void testN() {
 		System.out.println("testN() appelée , this="+this);
 		calculateur.addVal(7);

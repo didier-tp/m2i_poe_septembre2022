@@ -46,6 +46,7 @@ public class TestServiceClient {
 	}
 	
 	
+	
 	@Test
 	public void testRechercherTousLesClients() {
 		serviceClient.sauvegarderClient(new Client(null,"jean","Bon","12 rue Elle 75001 Paris","email1"));

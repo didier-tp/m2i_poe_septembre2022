@@ -1,11 +1,14 @@
-package tp.temp;
+package tp.appliSpring.temp;
 
-public class Calculateur {
+import org.springframework.stereotype.Component;
+
+@Component
+public class CalculateurSpring {
 	
 	private double somme;//=0;
 	private int n;//=0;
 	
-	public Calculateur() {
+	public CalculateurSpring() {
 		somme=0; n=0;
 	}
 	
