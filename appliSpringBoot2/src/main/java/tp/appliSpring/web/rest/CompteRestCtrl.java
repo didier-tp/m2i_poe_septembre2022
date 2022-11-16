@@ -147,7 +147,7 @@ public class CompteRestCtrl {
 						                 Long.parseLong(virementDto.getNumCptCred()));
 				virementDto.setOk(true);
 				virementDto.setMessage("virement bien effectué");
-			} catch (NumberFormatException e) {
+			} catch (Exception e) {
 				virementDto.setOk(false);
 				virementDto.setMessage("echec virement " + e.getMessage());
 				e.printStackTrace();
