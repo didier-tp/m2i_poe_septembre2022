@@ -85,7 +85,10 @@ public class ServiceCompteImpl implements ServiceCompte {
 			Operation opCredit = new Operation(null, "crédit suite au virement", montant);
 			opCredit.setCompte(cptCred);	daoOperation.save(opCredit);
 			daoCompte.save(cptCred); // v1  ou v2 sans .save() si @Transactional
-		} catch (Exception e) {
+		} catch (SoldeInsuffisantException e) {
+			throw e;
+		}
+		catch (Exception e) {
 			throw new RuntimeException("echec virement" , e);
 		}
 	}

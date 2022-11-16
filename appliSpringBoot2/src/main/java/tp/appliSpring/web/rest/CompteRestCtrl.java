@@ -138,7 +138,7 @@ public class CompteRestCtrl {
 
 		//URL= http://localhost:8080/appliSpringBoot/bank-api/compte/virement
 		//appelé en mode POST avec le corps de la requête HTTP comportant
-		// { "montant" : 50.0 , "numCptDeb" :  1 , "numCptCred" : 2 }
+		// { "montant" : 50.0 , "numCptDeb" :  "1" , "numCptCred" : "2" }
 		@PostMapping("virement") 
 		public VirementDto postVirement(@RequestBody VirementDto virementDto) {
 			try {
@@ -149,7 +149,7 @@ public class CompteRestCtrl {
 				virementDto.setMessage("virement bien effectué");
 			} catch (Exception e) {
 				virementDto.setOk(false);
-				virementDto.setMessage("echec virement " + e.getMessage());
+				virementDto.setMessage("echec virement : " + e.getMessage());
 				e.printStackTrace();
 			}  
 			return virementDto;
