@@ -24,6 +24,14 @@ public class DtoConverter {
 				            client.getAdresse());
 	}
 	
+	public static Client customerToClient(Customer c) {
+		return new Client(c.getNumber(),
+	            c.getFirstName(),
+	            c.getLastName(),
+	            c.getEmail(),
+	            c.getAddress());
+	}
+	
 	public static CompteDto compteToCompteDto(Compte compte) {
 		CompteDto compteDto = new CompteDto();
 		/*

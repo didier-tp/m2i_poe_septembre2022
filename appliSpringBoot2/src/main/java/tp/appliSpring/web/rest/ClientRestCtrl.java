@@ -6,6 +6,8 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -46,6 +48,17 @@ public class ClientRestCtrl {
 		   List<Customer> customers=DtoConverter.clientListToCustomerList(clients);
 		   return customers;
 		}
+	}
+	
+	//URL= http://localhost:8080/appliSpringBoot/bank-api/client
+	//appelé en mode POST avec le corps de la requête HTTP comportant
+	// { "number" : null , "firstName" :  "jean" , "lastName" : "Bon" , "address" : "12 rue Xy Paris" }
+	@PostMapping("") 
+	public Customer postCustomer(@RequestBody Customer customer) {
+		Client client = DtoConverter.customerToClient(customer);//dto-->entity
+		serviceClient.sauvegarderClient(client);//avec auto_incr du numero
+		customer.setNumber(client.getNumero());
+	    return customer;
 	}
 
 }
