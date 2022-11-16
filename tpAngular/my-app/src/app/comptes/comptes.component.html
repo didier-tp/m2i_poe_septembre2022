@@ -1,0 +1,12 @@
+numClient : <input [(ngModel)]="numClient" /> <br/>
+<button (click)="searchComptes()">rechercher comptes du client</button>
+<table border="1">
+    <thead>
+     <tr><td>numero</td><td>label</td><td>solde</td></tr>
+    </thead>
+    <tbody id="tbody">
+     <tr *ngFor="let compte of listComptes">
+        <td>{{compte.numero}}</td><td>{{compte.label}}</td><td>{{compte.solde}}</td>
+    </tr>
+    </tbody>
+  </table>
