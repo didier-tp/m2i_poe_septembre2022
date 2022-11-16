@@ -18,14 +18,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import tp.appliSpring.converter.DtoConverter;
-import tp.appliSpring.core.entity.Client;
 import tp.appliSpring.core.entity.Compte;
 import tp.appliSpring.core.exception.NotFoundException;
 import tp.appliSpring.core.service.ServiceCompte;
 import tp.appliSpring.dto.CompteDto;
 import tp.appliSpring.dto.CompteDtoEx;
-import tp.appliSpring.dto.Customer;
 import tp.appliSpring.dto.Message;
+import tp.appliSpring.dto.VirementDto;
 
 @RestController //composant spring de type contrôleur pour Web Service REST
 @RequestMapping(value="/bank-api/compte" , headers="Accept=application/json")
@@ -100,7 +99,7 @@ public class CompteRestCtrl {
 		
 		//URL= http://localhost:8080/appliSpringBoot/bank-api/compte
 		//appelé en mode PUT avec le corps de la requête HTTP comportant
-		// { "numero" : 4 , "label" :  "compteQuiVaEncoreBien" , "solde" : 150 }
+		// { "numero" : 5 , "label" :  "compteQuiVaEncoreBien" , "solde" : 150 }
 		@PutMapping("") 
 		public ResponseEntity<?> putCompteDto(@RequestBody CompteDto compteDto) {
 			Compte compte = DtoConverter.compteDtoToCompte(compteDto);//dto-->entity
@@ -137,5 +136,23 @@ public class CompteRestCtrl {
 			
 		}
 
-
+		//URL= http://localhost:8080/appliSpringBoot/bank-api/compte/virement
+		//appelé en mode POST avec le corps de la requête HTTP comportant
+		// { "montant" : 50.0 , "numCptDeb" :  1 , "numCptCred" : 2 }
+		@PostMapping("virement") 
+		public VirementDto postVirement(@RequestBody VirementDto virementDto) {
+			try {
+				serviceCompte.transferer(virementDto.getMontant(), 
+						                 Long.parseLong(virementDto.getNumCptDeb()), 
+						                 Long.parseLong(virementDto.getNumCptCred()));
+				virementDto.setOk(true);
+				virementDto.setMessage("virement bien effectué");
+			} catch (NumberFormatException e) {
+				virementDto.setOk(false);
+				virementDto.setMessage("echec virement " + e.getMessage());
+				e.printStackTrace();
+			}  
+			return virementDto;
+		}
+			
 }
