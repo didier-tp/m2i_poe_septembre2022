@@ -43,6 +43,12 @@ public class DtoConverter {
 		return compteDto;
 	}
 	
+	public static Compte compteDtoToCompte(CompteDto compteDto) {
+		Compte compte = new Compte();
+		BeanUtils.copyProperties(compteDto, compte);
+		return compte;
+	}
+	
 	public static List<Customer> clientListToCustomerList(List<Client> clients){
 		return clients.stream()
 			   .map((client)->clientToCustomer(client))

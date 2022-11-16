@@ -75,7 +75,7 @@ public class ClientRestCtrl {
 		Client clientExistant = serviceClient.rechercherClientParNumero(customer.getNumber());
 		if(clientExistant == null) {
 			return new ResponseEntity<Message>( 
-					new Message("impossible de mettre les données du client qui n'existe pas avec le numero=" 
+					new Message("impossible de mettre à jour les données du client qui n'existe pas avec le numero=" 
 							+ customer.getNumber()) 
 					, HttpStatus.NOT_FOUND);
 		}
