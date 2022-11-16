@@ -14,6 +14,7 @@
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
+		<spring.security.version>5.7.4</spring.security.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -25,11 +26,36 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		
+		
+		 <dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>${spring.security.version}</version>
+		</dependency>
 		<!--
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
+		-->
+		<!-- 
+		ATTENTION: si spring-boot-starter-security , 
+		securité par défaut éventuellement bloquante (si pas configurée)
+		-->
+		<!--
+		<dependency>
+		    <groupId>tp</groupId>
+		    <artifactId>my-jwt-basic-security-configure</artifactId>
+		    <version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		-->
+		<!-- 
+		ATTENTION: si my-jwt-basic-security-configure , 
+		besoin préalable de déclencher "mvn install" sur les projets annexes:
+		my-jwt-basic-security
+		my-jwt-basic-security-configure
+		et besoin d'activer le profile spring "withSecurity" dans main() ou ailleurs
+		et besoin de configurer src/main/resources/application-withSecurity.properties
 		-->
 
 		<dependency>

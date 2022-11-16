@@ -1,0 +1,31 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>appelAjax_clients</title>
+<script src="js/my_ajax_util.js"></script>
+<script src="js/clients.js"></script>
+</head>
+<body>
+numClient :<input type="text" id="txtNumClient"/> <br/>
+<input type="button" id="btnSearch" onclick="onSearchClient()"
+value="rechercher client"/> <br/>
+client : <span id="spanRes"></span>
+
+   <hr/>
+     <h3>login (post) pour obtenir token</h3>
+    username: <input type="text" value="user1" id="txtUsername" /> (ex: user1,admin1)<br/>
+    password: <input type="text" value="pwd1" id="txtPassword" /> <br/>
+    <input type="button" value="login" onclick="doLogin()" /><br/>
+    message : <span id="spanMessageLogin"></span>
+    
+    <hr/>
+     <h3>ajout (post) d'un nouveau client</h3>
+    prenom: <input type="text" value="prenom" id="txtPrenom" /> <br/>
+    nom: <input type="text" value="Nom" id="txtNom" /> <br/>
+    adresse: <input type="text" value="12, rue Elle 75001 Par_ici" id="txtAdresse" /><br/>
+    email: <input type="text" value="x.y@gmail.com" id="txtEmail" /><br/>
+    <input type="button" value="ajout (post) " onclick="doAjout()" /><br/>
+    message : <span id="spanMessage"></span>
+
+</body>
+</html>

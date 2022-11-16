@@ -13,30 +13,42 @@ function registerCallbacks(xhr, callback, errCallback) {
 	};
 }
 
-function makeAjaxGetRequest(url, callback, errCallback) {
+function makeAjaxGetRequest(url, callback, errCallback,token) {
 	var xhr = new XMLHttpRequest();
 	registerCallbacks(xhr, callback, errCallback);
+	if(token){
+		xhr.setRequestHeader("Authorization", "Bearer " + token);
+	}
 	xhr.open("GET", url, true); xhr.send(null);
 }
 
-function makeAjaxDeleteRequest(url, callback, errCallback) {
+function makeAjaxDeleteRequest(url, callback, errCallback,token) {
 	var xhr = new XMLHttpRequest();
 	registerCallbacks(xhr, callback, errCallback);
+	if(token){
+		xhr.setRequestHeader("Authorization", "Bearer " + token);
+	}
 	xhr.open("DELETE", url, true); xhr.send(null);
 }
 
-function makeAjaxPostRequest(url, jsonData, callback, errCallback) {
+function makeAjaxPostRequest(url, jsonData, callback, errCallback,token) {
 	var xhr = new XMLHttpRequest();
 	registerCallbacks(xhr, callback, errCallback);
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-Type", "application/json");
+	if(token){
+		xhr.setRequestHeader("Authorization", "Bearer " + token);
+	}
 	xhr.send(jsonData);
 }
 
-function makeAjaxPutRequest(url, jsonData, callback, errCallback) {
+function makeAjaxPutRequest(url, jsonData, callback, errCallback,token) {
 	var xhr = new XMLHttpRequest();
 	registerCallbacks(xhr, callback, errCallback);
 	xhr.open("PUT", url, true);
 	xhr.setRequestHeader("Content-Type", "application/json");
+	if(token){
+		xhr.setRequestHeader("Authorization", "Bearer " + token);
+	}
 	xhr.send(jsonData);
 }

@@ -6,6 +6,8 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,6 +25,9 @@ import tp.appliSpring.dto.Customer;
 import tp.appliSpring.dto.Message;
 
 @RestController //composant spring de type contrôleur pour Web Service REST
+@CrossOrigin(origins = "*")
+//@CrossOrigin(origins = { "http://localhost:4200" , "http://www.partenaire-particulier.com" })
+//@CrossOrigin(origins = "*" , methods = { RequestMethod.GET , RequestMethod.POST , RequestMethod.PUT , RequestMethod.DELETE , RequestMethod.OPTIONS})
 @RequestMapping(value="/bank-api/client" , headers="Accept=application/json")
 public class ClientRestCtrl {
 	
@@ -59,6 +64,7 @@ public class ClientRestCtrl {
 	//appelé en mode POST avec le corps de la requête HTTP comportant
 	// { "number" : null , "firstName" :  "jean" , "lastName" : "Bon" , "address" : "12 rue Xy Paris" , "email" : "jean.Bon@gmail.com"}
 	@PostMapping("") 
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public Customer postCustomer(@RequestBody Customer customer) {
 		Client client = DtoConverter.customerToClient(customer);//dto-->entity
 		serviceClient.sauvegarderClient(client);//avec auto_incr du numero

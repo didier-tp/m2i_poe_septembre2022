@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,6 +28,9 @@ import tp.appliSpring.dto.Message;
 import tp.appliSpring.dto.VirementDto;
 
 @RestController //composant spring de type contrôleur pour Web Service REST
+@CrossOrigin(origins = "*")
+//@CrossOrigin(origins = { "http://localhost:4200" , "http://www.partenaire-particulier.com" })
+//@CrossOrigin(origins = "*" , methods = { RequestMethod.GET , RequestMethod.POST , RequestMethod.PUT , RequestMethod.DELETE , RequestMethod.OPTIONS})
 @RequestMapping(value="/bank-api/compte" , headers="Accept=application/json")
 public class CompteRestCtrl {
 	
