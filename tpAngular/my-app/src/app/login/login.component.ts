@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
   postTraitementLoginResponse(loginResponse:LoginResponse){
       sessionStorage.setItem("token" , loginResponse.token );
       this.message = loginResponse.message;
+      console.log(JSON.stringify(loginResponse));
   }
 
   ngOnInit(): void {

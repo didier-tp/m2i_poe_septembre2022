@@ -1,1 +1,5 @@
-<p>login works!</p>
+<h3>Login</h3>
+  username : <input [(ngModel)]="loginRequest.username" />(user1 ou admin1)<br/>
+  password : <input [(ngModel)]="loginRequest.password" /> <br/>
+  <button (click)="doLogin()">login</button> <br/>
+  message: {{message}}
