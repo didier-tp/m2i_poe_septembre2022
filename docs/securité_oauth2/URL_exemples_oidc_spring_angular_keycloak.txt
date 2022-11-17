@@ -1,0 +1,18 @@
+
+Exemple oauth2/oidc:
+======================
+config serveur KeyCloak (à démarrer en premier):
+selon configuration exemple de 01_KeyCloak.pdf (avec :8989)
+---> http://localhost:8989/auth/
+
+backend java/springBoot (à démarrer en 2nd):
+https://github.com/didier-mycontrib/jee-spring-app-demo , appli "restDeviseApiOAuth2"
+---> 
+
+frontEnd angular (avec oidc) (à démarrer en dernier):
+https://github.com/didier-mycontrib/angular8plus , appli "oidc-app"
+---> ng serve et http://localhost:4200
+
+
+*********************************
+NB: Arreter tous les autres serveurs en local pour éviter conflit de numero de port

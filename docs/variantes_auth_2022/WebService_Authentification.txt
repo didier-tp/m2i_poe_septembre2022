@@ -1,0 +1,30 @@
+WebService  d'authentification souple (pour phase de dev et de prod)
+====================================================================
+
+en entrée:
+
+{
+username: 'toto'
+password: 'pwdToto'
+roles?: '...',
+scopes?: '...'
+}
+
+en sortie :
+{
+username: 'toto',
+roles?: '...',
+scopes?: '...',
+message : 'succesfull-login',
+token: null or 'jwt....' or '...'
+status : true
+}
+
+------------
+interprétation et réaction de la part du frontEnd:
+- si errorHttp (not 200) ou si  status == false ---> echec authentification (dev ou prod) , RAZ session et sessionStorage
+- si status == true et si token != null alors stockage et retransmission du token (pour la prod)
+- si status == true et si token == null (pour phase de dev) alors stockage (dans sessionStorage) et retransmission de 
+  * x-authenticated-userid = username 
+  * x-authenticated-scope = roles or scopes 
+  pour simuler la valeur ajoutée du api-gateway kong-oss et de son plugin oauth2 .
