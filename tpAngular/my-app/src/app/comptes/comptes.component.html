@@ -10,3 +10,10 @@ numClient : <input [(ngModel)]="numClient" /> <br/>
     </tr>
     </tbody>
   </table>
+
+  montant : <input [(ngModel)]="virement.montant" /> <br/>
+  numCptDeb : <input [(ngModel)]="virement.numCptDeb" /> <br/>
+  numCptCred : <input [(ngModel)]="virement.numCptCred" /> <br/>
+  <button (click)="declencherVirement()">declencherVirement</button> <br/>
+  ok? : {{virement.ok}} <br/>
+  message: {{virement.message}}

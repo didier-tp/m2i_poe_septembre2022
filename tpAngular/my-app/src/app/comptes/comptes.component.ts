@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Compte } from '../common/data/compte';
+import { Virement } from '../common/data/virement';
 import { CompteService } from '../common/service/compte.service';
 
 @Component({
@@ -11,6 +12,16 @@ export class ComptesComponent implements OnInit {
 
   numClient = 0;
   listComptes :Compte[]= [];
+  virement :Virement = new Virement();
+
+  declencherVirement(){
+    this.compteService.postVirement$(this.virement)
+    .subscribe({
+       next: (virementEffectue:Virement)=>{ 
+              this.virement = virementEffectue;},
+       error: (err)=>{ console.log(err);}
+    });
+  }
 
   searchComptes(){
     /*
