@@ -18,9 +18,17 @@ export class ComptesComponent implements OnInit {
     this.compteService.postVirement$(this.virement)
     .subscribe({
        next: (virementEffectue:Virement)=>{ 
-              this.virement = virementEffectue;},
+                this.postTraitementVirement(virementEffectue);
+              },
        error: (err)=>{ console.log(err);}
     });
+  }
+
+  postTraitementVirement(virementEffectue:Virement){
+    this.virement = virementEffectue;
+    if(virementEffectue.ok){
+      this.searchComptes();
+    }
   }
 
   searchComptes(){
