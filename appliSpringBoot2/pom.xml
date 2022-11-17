@@ -42,13 +42,13 @@
 		ATTENTION: si spring-boot-starter-security , 
 		securité par défaut éventuellement bloquante (si pas configurée)
 		-->
-		<!--
+		
 		<dependency>
 		    <groupId>tp</groupId>
 		    <artifactId>my-jwt-basic-security-configure</artifactId>
 		    <version>0.0.1-SNAPSHOT</version>
 		</dependency>
-		-->
+	
 		<!-- 
 		ATTENTION: si my-jwt-basic-security-configure , 
 		besoin préalable de déclencher "mvn install" sur les projets annexes:
